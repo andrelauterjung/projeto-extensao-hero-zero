@@ -14,6 +14,15 @@ import herozero.project.community.logic.BonusTotal;
 
 import java.util.Scanner;
 
+
+/**=== HISTÓRICO DE VERSÕES ===
+
+[v1.0.0] - 19/05/2026
+* Projeto: Calculadora de Habilidade básica Hero Zero
+* Versão atual: 1.0.0
+* Desenvolvedor: André Lauterjung
+*/
+
 public class Main
 {
     public static void main(String[] args)
@@ -33,7 +42,7 @@ public class Main
         
         Scanner sc = new Scanner(System.in);
         
-        
+        System.out.println("*******  Calculadora de Habilidade Básica Hero Zero v1.0.0  ***************");
         System.out.println("***************************************************************************");
         System.out.println("***                          INICIANDO O PROGRAMA                       ***");
         System.out.printf("***************************************************************************\n\n");
@@ -55,7 +64,7 @@ public class Main
         bonusTotal.setBonusTotalCerebro(bonusEnergeticoPersonagem);
         bonusTotal.setBonusTotalIntuicao(bonusEnergeticoPersonagem);
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         // Calculando o bônus que a Liga acrescenta nas habilidades básicas do personagem.
         liga.listaLigas();
         
@@ -73,7 +82,7 @@ public class Main
         bonusTotal.setBonusTotalCerebro(bonusLigaPersonagem);
         bonusTotal.setBonusTotalIntuicao(bonusLigaPersonagem);
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         
         
         // Calcular bônus que o time atribui às habilidades básicas
@@ -115,7 +124,7 @@ public class Main
         }
         
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n");
         
         // Calculando bônus que o Laboratório de Pesquisa cibernético acrescenta às habilidades básicas do personagem.
         
@@ -134,7 +143,7 @@ public class Main
         bonusTotal.setBonusTotalIntuicao(personagemBonusEsconderijo);
         
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         
         // Calcular bônus da habilidade do pet
         
@@ -142,6 +151,7 @@ public class Main
         
         habilidadePet.listaHabilidadePets();
         int escolhaHabilidadePet = sc.nextInt();
+        
         
         habilidadePet.escolhaHabilidade(escolhaHabilidadePet);
         sc.nextLine(); 
@@ -159,7 +169,7 @@ public class Main
         bonusTotal.setBonusTotalIntuicao(personagemBonusPetIntuicao);
         
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         
         // Calcular o bônus de temporada
         
@@ -180,7 +190,7 @@ public class Main
             temporada.verificacaoBonusTemporada(nomeHabilidade, valorEntradaBonusTemporada);
             // e aqui, passando os dois valores coletados acima, chamo o método onde vai ocorrer a verificação e assim retornar a resposta. 
             
-            //Armazenar o valor do bônus de pet em todas as variáveis classe BonusTotal
+            //Armazenar o valor do bônus de temporada em todas as variáveis classe BonusTotal
             int valorBonusTemporadaForca = temporada.getBonusTemporadaForca();
             int valorBonusTemporadaVigor = temporada.getBonusTemporadaVigor();
             int valorBonusTemporadaCerebro = temporada.getBonusTemporadaCerebro();
@@ -192,17 +202,13 @@ public class Main
             bonusTotal.setBonusTotalIntuicao(valorBonusTemporadaIntuicao);
             
             
-            
-            
-            System.out.printf("\n\n");
         }
         else
         {
            temporada.semBonusTemporada(); // só roda se a temporada não influenciar em nada as habilidades básicas. 
-            System.out.printf("\n\n");
         }      
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         
         // Calcular bônus do conjunto de equipamentos.
         
@@ -211,15 +217,12 @@ public class Main
         
         if(pergunta.toLowerCase().equals("sim")) 
         {
-            bonusEquipamentos.conjuntoLendarioEquipado();
+            bonusEquipamentos.conjuntoLendarioEquipado(); // pergunta se o jogador tem conjunto lendário completo
         }
-        else if(pergunta.toLowerCase().equals("nao"))
+        else if(pergunta.toLowerCase().equals("nao")) // caso ele não tenha conjunto lendário completo, passa a perguntar sobre conjunto épico
         {
             bonusEquipamentos.perguntaConjuntoEpico();
             pergunta = sc.nextLine();
-            
-            //bonusEquipamentos.perguntaConjuntoDispositivoArma();
-            //String perguntaDispositivoArma = sc.nextLine();
             
             if(pergunta.toLowerCase().equals("sim"))
             {
@@ -236,93 +239,69 @@ public class Main
                     case 7:
                         bonusEquipamentos.conjuntoEpicoEquipado();
                         break;
-                }
-                
-                bonusEquipamentos.perguntaConjuntoDispositivoArma();
-                String perguntaDispositivoArma = sc.nextLine();
-                
-                if(perguntaDispositivoArma.toLowerCase().equals("sim"))
-                {
-                    System.out.println("Digite em qual habilidade o bônus de dispositivo + arma é incrementado: ");
-                    String nomeAtributoBonusDispositivoArma = sc.nextLine();
-                    
-                    
-                    bonusEquipamentos.perguntaConjuntoArmaMissil(nomeAtributoBonusDispositivoArma);
-                }
-                else
-                {
-                    bonusEquipamentos.semConjuntoDispositivoArma();
-                }
-            }
-        }
+                }   
+                    bonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
+                    String perguntaDispoArmaMissil = sc.nextLine();
         
-        else if(pergunta.toLowerCase().equals("nao"))
-        {
-            bonusEquipamentos.perguntaConjuntosMistos();
-            String perguntaConjuntoEquipMistos = sc.nextLine();
+                    if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) // pergunta bônus de dispositivo + arma ou arma + missil
+                    {
+                        System.out.println("Em qual habilidade o bônus é acrescentado?");
+                        System.out.println("Opções: forca, vigor, cerebro ou intuicao");
+                        System.out.println("Observação: digite sem caracteres especiais ou acentos.\n\n");
+                        String verificacaoHabilidadeConjDispoArmaMissil = sc.nextLine();
             
-            
-            if(perguntaConjuntoEquipMistos.toLowerCase().equals("sim"))
-            {
-                System.out.println("o jogador possui peças de conjunto lendário? ");
-                pergunta = sc.nextLine();
-                
-                
-                if(pergunta.toLowerCase().equals("sim"))
-                {
-                    System.out.println("Digite o total de bônus que, apenas os objetos lendários equipados acrescentam a: ");
-                    System.out.println("Força básica: ");
-                    int pontosObjetosLendariosMistosForca = sc.nextInt();
-                    bonusEquipamentos.setForca(pontosObjetosLendariosMistosForca);
-                    
-                    System.out.println("Vigor básico: ");
-                    int pontosObjetosLendariosMistosVigor = sc.nextInt();
-                    bonusEquipamentos.setVigor(pontosObjetosLendariosMistosVigor);
-                    
-                    System.out.println("Cérebro básico: ");
-                    int pontosObjetosLendariosMistosCerebro = sc.nextInt();
-                    bonusEquipamentos.setCerebro(pontosObjetosLendariosMistosCerebro);
-                    
-                    System.out.println("Intuicao básica: ");
-                    int pontosObjetosLendariosMistosIntuicao = sc.nextInt();
-                    bonusEquipamentos.setIntuicao(pontosObjetosLendariosMistosIntuicao);
-                    sc.nextLine();
-                    
-                    System.out.println("o jogador possui peças de conjunto épico? ");
-                    pergunta = sc.nextLine();
-                    
-                    
-                    if(pergunta.toLowerCase().equals("sim"))
-                    {    
-                    System.out.println("Digite o total de bônus que, apenas os objetos épicos equipados acrescentam a: ");
-                    
-                    System.out.println("Força básica: ");
-                    int pontosObjetosEpicosMistosForca = sc.nextInt();
-                    bonusEquipamentos.setForca(pontosObjetosEpicosMistosForca);
-                    
-                    System.out.println("Vigor básico: ");
-                    int pontosObjetosEpicosMistosVigor = sc.nextInt();
-                    bonusEquipamentos.setVigor(pontosObjetosEpicosMistosVigor);
-                    
-                    System.out.println("Cérebro básico: ");
-                    int pontosObjetosEpicosMistosCerebro = sc.nextInt();
-                    bonusEquipamentos.setCerebro(pontosObjetosEpicosMistosCerebro);
-                    
-                    System.out.println("Intuicao básica: ");
-                    int pontosObjetosEpicosMistosIntuicao = sc.nextInt();
-                    bonusEquipamentos.setIntuicao(pontosObjetosEpicosMistosIntuicao);
+                        bonusEquipamentos.perguntaConjuntoDispositivoArmaMissil(verificacaoHabilidadeConjDispoArmaMissil);
                     }
-                }
+                    else
+                    {
+                        bonusEquipamentos.semConjuntoDispositivoArmaMissil();
+                    }
+            }
+            
+            
+            
+            else if(pergunta.toLowerCase().equals("nao")) // se ele não tiver conjunto épico completo 
+            {   
+                bonusEquipamentos.perguntaConjuntosMistos(); 
+                System.out.println("Digite 'sim' ou 'nao' ");
+                String perguntaConjuntoEquipMistos = sc.nextLine();
+            
+                if(perguntaConjuntoEquipMistos.toLowerCase().equals("sim"))
+                {
+                    System.out.println("Digite o total de bônus que a seguinte habilidade recebe do conjunto de objetos: ");
+                    System.out.println("Observação: se o personagem recebe bônus de diferentes conjuntos na mesma habilidade, como capa+traje(7% na força) e cinto+sapatos(7% na força), some o bônus (7+7, por exemplo) e insira na respectiva habilidade");
+                    
+                    
+                    System.out.println("Força básica: ");
+                    int pontosObjetosMistosForca = sc.nextInt();
+                    sc.nextLine();
+                    bonusEquipamentos.setForca(pontosObjetosMistosForca);
+                    
+                    System.out.println("Vigor básico: ");
+                    int pontosObjetosMistosVigor = sc.nextInt();
+                    sc.nextLine();
+                    bonusEquipamentos.setVigor(pontosObjetosMistosVigor);
+                    
+                    System.out.println("Cérebro básico: ");
+                    int pontosObjetosMistosCerebro = sc.nextInt();
+                    sc.nextLine();
+                    bonusEquipamentos.setCerebro(pontosObjetosMistosCerebro);
+                    
+                    System.out.println("Intuicao básica: ");
+                    int pontosObjetosMistosIntuicao = sc.nextInt();
+                    sc.nextLine();
+                    bonusEquipamentos.setIntuicao(pontosObjetosMistosIntuicao);
             }
             else
             {
-                bonusEquipamentos.semConjuntoEpicoEquipado(); // como não vai ter nenhum bonus de conjunto, posso reaproveitar o método.
+                bonusEquipamentos.semConjuntoEquipado(); // como não vai ter nenhum bonus de conjunto, posso reaproveitar o método.
             }   
               
         }
         
+        
         System.out.printf("\n\n");
-        System.out.println("Resultado final dos bônus de conjunto: ");
+        /*System.out.println("Resultado final dos bônus de conjunto: ");
         
         int finalBonusForcaConjuntoEquipamentos = bonusEquipamentos.getForca();
         int finalBonusVigorConjuntoEquipamentos = bonusEquipamentos.getVigor();
@@ -340,8 +319,28 @@ public class Main
         System.out.printf("Força: %d%%\n", finalBonusForcaConjuntoEquipamentos );
         System.out.printf("Vigor: %d%%\n", finalBonusVigorConjuntoEquipamentos);
         System.out.printf("Cerebro: %d%%\n", finalBonusCerebroConjuntoEquipamentos);
-        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);
+        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);*/
         
+        }
+        System.out.println("Resultado final dos bônus de conjunto: ");
+        
+        int finalBonusForcaConjuntoEquipamentos = bonusEquipamentos.getForca();
+        int finalBonusVigorConjuntoEquipamentos = bonusEquipamentos.getVigor();
+        int finalBonusCerebroConjuntoEquipamentos = bonusEquipamentos.getCerebro();
+        int finalBonusIntuicaoConjuntoEquipamentos = bonusEquipamentos.getIntuicao();
+ 
+        
+        //Armazenar o valor do bônus de conjunto em todas as variáveis classe BonusTotal
+        bonusTotal.setBonusTotalForca(finalBonusForcaConjuntoEquipamentos);
+        bonusTotal.setBonusTotalVigor(finalBonusVigorConjuntoEquipamentos);
+        bonusTotal.setBonusTotalCerebro(finalBonusCerebroConjuntoEquipamentos);
+        bonusTotal.setBonusTotalIntuicao(finalBonusIntuicaoConjuntoEquipamentos);
+        
+        System.out.printf("Força: %d%%\n", finalBonusForcaConjuntoEquipamentos );
+        System.out.printf("Vigor: %d%%\n", finalBonusVigorConjuntoEquipamentos);
+        System.out.printf("Cerebro: %d%%\n", finalBonusCerebroConjuntoEquipamentos);
+        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);
+       
         
         System.out.printf("***************************************************************************\n\n");
         
@@ -350,7 +349,7 @@ public class Main
     
         
         System.out.println("Qual a habilidade que você deseja descobrir o valor base?");
-        System.out.println("Opções: força, vigor, cérebro e intuição");
+        System.out.println("Opções: forca, vigor, cerebro e intuicao");
         System.out.println("Observação: digite sem caracteres especiais ou acentos.");
         String perguntaHabilidadeCalculada = sc.nextLine(); // Armazenar a habilidade que o usuário quer calcular
         
@@ -617,7 +616,7 @@ public class Main
                 
                 
                 // Perguntar e armazernar o valor total de pontos de intuição que o cinto acrescenta às habilidades do personagem
-                atributosEquipamentosPet.mensagemForcaItemCinto();
+                atributosEquipamentosPet.mensagemIntuicaoItemCinto();
                 int atributoIntuicaoEquipamentosCinto = sc.nextInt();
                 
                 
@@ -670,7 +669,7 @@ public class Main
                 System.out.println("Habilidade indisponível!");
         }
         
-        System.out.printf("***************************************************************************\n\n");
+        System.out.printf("\n***************************************************************************\n\n");
         // Parte final da lógica do programa
         
         
@@ -694,7 +693,7 @@ public class Main
         
             double habilidadeBasicaForca = resultadoSubForcaTotEquipPet / (1+(bonusTotalForca/100)); 
             
-            System.out.printf("FORÇA BÁSICA QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaForca);
+            System.out.printf("VALOR APROXIMADO DE FORÇA BÁSICA QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaForca);
             
             break;
             
@@ -709,7 +708,7 @@ public class Main
                 
                 double habilidadeBasicaVigor = resultadoSubVigorTotEquipPet / (1+(bonusTotalVigor/100));
                 
-                System.out.printf("VIGOR BÁSICO QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaVigor);
+                System.out.printf("VALOR APROXIMADO DE VIGOR BÁSICO QUE O PERSONAGEM POSSUI %.1f PONTOS.\n\n", habilidadeBasicaVigor);
                 
                 break;
             case "cerebro":
@@ -723,7 +722,7 @@ public class Main
                 
                 double habilidadeBasicaCerebro = resultadoSubCerebroTotEquipPet / (1+(bonusTotalCerebro/100));
                 
-                System.out.printf("CÉREBRO BÁSICO QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaCerebro);
+                System.out.printf("VALOR APROXIMADO DE CÉREBRO BÁSICO QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaCerebro);
                 
                 break;
                 
@@ -739,7 +738,7 @@ public class Main
                 
                 double habilidadeBasicaIntuicao = resultadoSubIntuicaoTotEquipPet / (1+(bonusTotalIntuicao/100));
                 
-                System.out.printf("INTUIÇÃO BÁSICA QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaIntuicao);
+                System.out.printf("VALOR APROXIMADO DE INTUIÇÃO BÁSICA QUE O PERSONAGEM POSSUI: %.1f PONTOS.\n\n", habilidadeBasicaIntuicao);
                 
                 break;
                 

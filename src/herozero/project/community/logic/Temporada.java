@@ -12,13 +12,14 @@ public class Temporada
     public void perguntaTemporadaHabilidade()
     {
         System.out.println("A temporada acrescenta algum bônus nas habilidades básicas? ");
-        System.out.println("Digite 'sim' ou 'nao'. "); 
+        System.out.println("Digite 'sim' ou 'nao' "); 
     }
     
     public void bonusNomeHabilidadeBasica()
     {
         System.out.println("Digite o nome do atributo que recebe o bônus");
-        System.out.println("todas, forca, vigor, cerebro ou intuicao: ");
+        System.out.println("opções: todos, forca, vigor, cerebro ou intuicao. ");
+        System.out.println("Observação: digite sem caracteres especiais ou acentos.");
     }
     
     public void bonusTemporadaHabilidade()
@@ -33,22 +34,22 @@ public class Temporada
         {
             case "forca":
                 this.forcaBasica = valorBonusTemporada;
-                System.out.printf("O personagem recebe um bônus de %d%% na força básica!\n\n", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% na força básica!\n", valorBonusTemporada);
                 break;
                 
             case "vigor":
                 this.vigorBasico = valorBonusTemporada;
-                System.out.printf("O personagem recebe um bônus de %d%% no vigor básico!\n\n", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% no vigor básico!\n", valorBonusTemporada);
                 break;
                 
             case "cerebro":
                 this.cerebroBasico= valorBonusTemporada;
-                System.out.printf("O personagem recebe um bônus de %d%% no cérebro básico!\n\n", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% no cérebro básico!\n", valorBonusTemporada);
                 break;
                 
             case "intuicao":
                 this.intuicaoBasica = valorBonusTemporada;
-                System.out.printf("O personagem recebe um bônus de %d%% na intuição básica!\n\n", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% na intuição básica!\n", valorBonusTemporada);
                 break;
                 
             case "todas":
@@ -56,7 +57,7 @@ public class Temporada
                 this.vigorBasico = valorBonusTemporada;
                 this.cerebroBasico = valorBonusTemporada;
                 this.intuicaoBasica = valorBonusTemporada;
-                System.out.printf("O personagem recebe um bônus de %d%% em todas as habilidades básicas!", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% em todas as habilidades básicas!\n", valorBonusTemporada);
                 break;
         }
     }

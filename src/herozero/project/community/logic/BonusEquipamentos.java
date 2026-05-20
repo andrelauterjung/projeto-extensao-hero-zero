@@ -11,28 +11,32 @@ public class BonusEquipamentos
     public void perguntaConjuntoLendario()
     {
         System.out.println("O jogador possui um conjunto lendário completo? 7 de 7 peças");
+        System.out.println("Digite 'sim' ou 'nao' "); 
     }
     
     
     public void perguntaConjuntoEpico() // perguntar ao usuário se o personagem tem conjunto épico equipado
     {
-        System.out.println("O jogador possui peças do conjunto épico?");
-        System.out.println("O conjunto épico consiste em 5 peças: Sapatos, Cinto, Traje, Capa e Máscara.");
+        System.out.printf("O jogador possui um conjunto épico completo? 5 de 5 peças\n");
+        System.out.println("Digite 'sim' ou 'nao' "); 
     }
+
     
-    public void perguntaConjuntoDispositivoArma() // perguntr ao usuário se o personagem tem conjunto de dispositivo + arma equipado
+    
+    public void perguntaConjuntoDispositivoArmaMissil() // perguntr ao usuário se o personagem tem conjunto de dispositivo + arma equipado
     {
-        System.out.println("O jogador possui um conjunto de Dispositivo + Arma?");
+        System.out.printf("O jogador possui um conjunto de Dispositivo + Arma ou Arma + Míssil?\n");
+        System.out.println("Digite 'sim' ou 'nao' "); 
     }
     
     public void perguntaConjuntosMistos()
     {
         System.out.println("O personagem está com diferentes tipos de conjuntos?");
-        System.out.println("Exemplo: sapatos, cinto e traje épicos - capa, máscara, dispositivo e árma lendários?");
+        System.out.println("Exemplo: sapatos, cinto e traje épicos - capa, máscara, dispositivo e árma lendários, entre outras combinações");
     }
     
     
-    public void perguntaConjuntoArmaMissil(String bonusDispositivoArma) 
+    public void perguntaConjuntoDispositivoArmaMissil(String bonusDispositivoArma) 
     {
         switch(bonusDispositivoArma)
         {
@@ -80,7 +84,7 @@ public class BonusEquipamentos
         this.bonusEquipamentosCerebro = 7;
         this.bonusEquipamentosIntuicao = 7;
         
-        System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n\n");
+        System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n");
     }
     
     public void conjuntoEpicoCincoPorcento() // Método para o conjunto épico que dá bônus de 5% em todas as habilidade básicas do personagem.
@@ -90,7 +94,7 @@ public class BonusEquipamentos
         this.bonusEquipamentosCerebro = 5;
         this.bonusEquipamentosIntuicao = 5;
         
-        System.out.printf("Todas as habilidades básicas recebem um bônus de 5% de conjunto\n\n");
+        System.out.printf("Todas as habilidades básicas recebem um bônus de 5%% de conjunto\n");
     }
     
     public void semConjuntoEpicoEquipado() // Método para caso o personagem não tenha um conjunto de equipamentos, o valor do bônus do conjunto é igual a 0 em todas as habilidades.
@@ -103,7 +107,17 @@ public class BonusEquipamentos
         System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
     }
     
-    public void semConjuntoDispositivoArma() // se o personagem não tiver o conjunto de Dispositivo + arma, o método é chamado.
+    public void semConjuntoEquipado() // Método para caso o personagem não tenha um conjunto de equipamentos, o valor do bônus do conjunto é igual a 0 em todas as habilidades.
+    {
+        this.bonusEquipamentosForca = 0;
+        this.bonusEquipamentosVigor = 0;
+        this.bonusEquipamentosCerebro = 0;
+        this.bonusEquipamentosIntuicao = 0;
+        
+        System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
+    }
+    
+    public void semConjuntoDispositivoArmaMissil() // se o personagem não tiver o conjunto de Dispositivo + arma, o método é chamado.
     {
         this.bonusEquipamentosForca  +=0;
         this.bonusEquipamentosVigor  +=0;

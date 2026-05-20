@@ -14,7 +14,6 @@ public class EsconderijoHeroico
         {   
             System.out.printf("%d - Bônus de %d%% nas habilidades básicas\n", i, i);
         }
-        System.out.printf("\n\n");
     }
     
     
@@ -33,7 +32,7 @@ public class EsconderijoHeroico
         {
             this.bonusEsconderijo = valorEntradaBonusEsconderijo;
         }
-        System.out.printf("O personagem recebe %d%% de bônus do esconderijo heroico!\n\n", this.bonusEsconderijo);
+        System.out.printf("O personagem recebe %d%% de bônus do esconderijo heroico\n", this.bonusEsconderijo);
     }
     
     
