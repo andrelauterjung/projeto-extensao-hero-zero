@@ -1,24 +1,28 @@
 package herozero.project.community.logic;
 
-public class EnergeticoDeHabilidade
-{
-    private int bonusEnergeticoHabilidade;
-    
-    
-    
-    public void listaEnergeticos()
-    {
-        System.out.printf("Digite o número correspondente ao energético que o herói está usando:\n\n");
+import herozero.project.community.view.BonusEnergeticView;
 
-        System.out.println("0 - O jogador não equipou nenhum energético no personagem.");
-        System.out.println("1 - Energético que dá bônus de 10% nas habilidades básicas do personagem.");
-        System.out.println("2 - Energético que dá bônus de 25% nas habilidades básicas do personagem.");
-        System.out.println("3 - Energético que dá bônus de 50% nas habilidades básicas do personagem.");
-    }
+import java.util.Scanner;
+
+/**
+ * Classe com métodos que retornam informações ao usuário e armazena valor 
+ * referente ao bônus de energético de habilidade que o personagem recebe.
+ * 
+ * @author André Lauterjung
+ */
+public class EnergeticoDeHabilidade
+{ 
+    private int bonusEnergeticoHabilidade; // Variável onde o valor final será armazenado
     
-    public void verificarEnergetico(int opcaoEnergetico)
+    public void verificarEnergetico(Scanner sc)
     {
-        switch(opcaoEnergetico)
+        BonusEnergeticView perguntaEnergetico = new BonusEnergeticView();
+        
+        perguntaEnergetico.listaEnergeticos();
+        int userOpcaoEnergetico = sc.nextInt();
+        sc.nextLine();
+        
+        switch(userOpcaoEnergetico)
         {
             case 0:
                 this.bonusEnergeticoHabilidade = 0;
@@ -36,8 +40,11 @@ public class EnergeticoDeHabilidade
                 this.bonusEnergeticoHabilidade = 50;
                 break;
                 
+            default: 
+                System.out.println("Valor inválido!");
+                this.bonusEnergeticoHabilidade = 0;
         }
-        System.out.printf("Bônus do energético de habilidade: %d%%\n",this.bonusEnergeticoHabilidade);
+        System.out.printf("Bônus do energético de habilidade: %d%%\n", this.bonusEnergeticoHabilidade);
     }
     
     // Método Setter

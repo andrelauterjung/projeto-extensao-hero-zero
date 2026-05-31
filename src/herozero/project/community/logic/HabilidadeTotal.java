@@ -1,5 +1,11 @@
 package herozero.project.community.logic;
 
+/**
+ * Classe com métodos que retornam informações ao usuário e armazena valor 
+ * referente a habilidade total do personagem.
+ * 
+ * @author André Lauterjung
+ */
 public class HabilidadeTotal
 {
     private int forcaTotal;

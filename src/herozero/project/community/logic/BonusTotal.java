@@ -1,5 +1,11 @@
 package herozero.project.community.logic;
 
+/**
+ * Classe com métodos que retornam informações ao usuário e armazenam valores 
+ * referentes ao bônus totais que o personagem recebe.
+ * 
+ * @author André Lauterjung
+ */
 public class BonusTotal
 {
     private double bonusTotalForca;
@@ -72,6 +78,5 @@ public class BonusTotal
     public double getBonusTotalIntuicao()
     {
         return this.bonusTotalIntuicao;
-    }
-    
+    }    
 }

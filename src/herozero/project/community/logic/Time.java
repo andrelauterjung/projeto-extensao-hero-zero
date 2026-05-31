@@ -1,43 +1,57 @@
 package herozero.project.community.logic;
 
+import herozero.project.community.view.BonusTeamView;
+
+import java.util.Scanner;
+/**
+ * Classe com métodos que retornam informações ao usuário e armazena valor 
+ * referente ao bônus de time que o personagem recebe.
+ * 
+ * @author André Lauterjung
+ */
 public class Time
 {
-    private int bonusTime;
+    private int bonusTime; 
     
-    
-    public void mensagemTime() // Método para mostrar mensagem antes do usuário digitar informações
+    public void verificarBonusTime(Scanner sc)
     {
-        System.out.println("Digite quanto de bônus as instalações do time acrescentam às habilidades do personagem:");
-    }
-    
-    
-    public void verificarBonusTime(int valorBonusTime)
-    {
-        if(valorBonusTime < 0 ||valorBonusTime >50)
+        BonusTeamView perguntaBonusTime = new BonusTeamView();
+        
+        perguntaBonusTime.perguntaPersonagemTime();
+        String analiseJogadorEquipe = sc.nextLine(); // Armazena o 'sim' ou 'nao'
+        String editAnaliseJogadorEquipe = analiseJogadorEquipe.toLowerCase(); // transforma toda a String em letras minúsculas e atribui a uma nova variável
+  
+        if(editAnaliseJogadorEquipe.equals("sim"))
         {
-            this.bonusTime = 0;
-            System.out.println("Valor inválido!");
-        }
-        else if(valorBonusTime == 0)
-        {
-            this.bonusTime = 0;
-        }
-        else
-        {
-            this.bonusTime = valorBonusTime;
+            perguntaBonusTime.mensagemTime(); // pergunta o total de bônus que a equipe dá às habilidades básicas do personagem
+            int valorBonusTime = sc.nextInt();
+            sc.nextLine();
+            
+            
+            if(valorBonusTime <= 0 ||valorBonusTime >50)
+            {
+                this.bonusTime = 0;
+                System.out.println("Valor inválido!");
+                perguntaBonusTime.semBonusTime();
+            }
+            
+            else 
+            {
+                this.bonusTime = valorBonusTime;
+                
+                System.out.printf("O personagem recebe um bônus de %d%% do time nas habilidades básicas!\n\n", this.bonusTime);
+                //Armazenar o valor do bônus de time em todas as variáveis classe BonusTotal
+  
+            }
         }
         
-        System.out.printf("O personagem recebe um bônus de %d%% do time nas habilidades básicas!\n\n", this.bonusTime);
+        else 
+        {
+           perguntaBonusTime.semBonusTime();
+           
+           this.bonusTime = 0;
+        }   
     }
-    
-    public void semTime() //caso o if seja false, este método é chamado
-    {
-        this.bonusTime = 0;
-        System.out.println("O personagem não está em nenhum time!");
-        System.out.println("Ele não recebe nenhum bônus de time nas habilidades básicas");
-    }
-    
-    
     
     // Método Setter
     public void setBonusTime(int valorBonusTime)
@@ -50,5 +64,4 @@ public class Time
     {
         return this.bonusTime;
     }
-   
 }

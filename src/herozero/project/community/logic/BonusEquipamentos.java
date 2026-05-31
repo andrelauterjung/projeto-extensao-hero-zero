@@ -1,5 +1,15 @@
 package herozero.project.community.logic;
 
+import herozero.project.community.view.BonusEquipamentosView;
+
+import java.util.Scanner;
+
+/**
+ * Classe com métodos que perguntam informações ao usuário e armazenam valores referentes
+ * aos bônus dos equipamentos que o personagem está usando.
+ * 
+ * @author André Lauterjung
+ */
 public class BonusEquipamentos
 {
     private int bonusEquipamentosForca;
@@ -8,123 +18,147 @@ public class BonusEquipamentos
     private int bonusEquipamentosIntuicao;
     
     
-    public void perguntaConjuntoLendario()
+    public void verificarConjuntos(Scanner sc)
     {
-        System.out.println("O jogador possui um conjunto lendário completo? 7 de 7 peças");
-        System.out.println("Digite 'sim' ou 'nao' "); 
-    }
-    
-    
-    public void perguntaConjuntoEpico() // perguntar ao usuário se o personagem tem conjunto épico equipado
-    {
-        System.out.printf("O jogador possui um conjunto épico completo? 5 de 5 peças\n");
-        System.out.println("Digite 'sim' ou 'nao' "); 
-    }
-
-    
-    
-    public void perguntaConjuntoDispositivoArmaMissil() // perguntr ao usuário se o personagem tem conjunto de dispositivo + arma equipado
-    {
-        System.out.printf("O jogador possui um conjunto de Dispositivo + Arma ou Arma + Míssil?\n");
-        System.out.println("Digite 'sim' ou 'nao' "); 
-    }
-    
-    public void perguntaConjuntosMistos()
-    {
-        System.out.println("O personagem está com diferentes tipos de conjuntos?");
-        System.out.println("Exemplo: sapatos, cinto e traje épicos - capa, máscara, dispositivo e árma lendários, entre outras combinações");
-    }
-    
-    
-    public void perguntaConjuntoDispositivoArmaMissil(String bonusDispositivoArma) 
-    {
-        switch(bonusDispositivoArma)
+        BonusEquipamentosView perguntaBonusEquipamentos = new BonusEquipamentosView();
+        
+        perguntaBonusEquipamentos.perguntaConjuntoLendario();
+        String perguntaLendario = sc.nextLine();
+        if(perguntaLendario.toLowerCase().equals("sim")) // caso o usúário digite que o personagem tenha conjunto lendário 
         {
-            case "forca":
-                this.bonusEquipamentosForca += 7;
-                System.out.printf("Total de bônus no(a) %s: %d%%\n", bonusDispositivoArma, this.bonusEquipamentosForca);
+            this.bonusEquipamentosForca = 10;
+            this.bonusEquipamentosVigor = 10;
+            this.bonusEquipamentosCerebro = 10;
+            this.bonusEquipamentosIntuicao = 10;
+                
+            System.out.println("Todas as habilidades básicas recebem um bônus de 10% de conjunto");
+            return;
+        }
+        
+        
+        perguntaBonusEquipamentos.perguntaConjuntoEpico();
+        String perguntaEpico = sc.nextLine();
+        
+        if(perguntaEpico.toLowerCase().equals("sim")) // caso ele tenha conjunto épico completo
+        {
+            System.out.println("O conjunto épico acrescenta bônus de 5% ou 7% às habilidades básicas do personagem?");
+            int verificacaoTipoConjEpico = sc.nextInt();
+            sc.nextLine();
+                
+            switch(verificacaoTipoConjEpico)
+            {
+                case 5:
+                    this.bonusEquipamentosForca = 5;
+                    this.bonusEquipamentosVigor = 5;
+                    this.bonusEquipamentosCerebro = 5;
+                    this.bonusEquipamentosIntuicao = 5;
+        
+                    System.out.printf("Todas as habilidades básicas recebem um bônus de 5%% de conjunto\n"); 
                 break;
                     
-            case "vigor":
-                this.bonusEquipamentosVigor += 7;
-                System.out.printf("Total de bônus no(a) %s: %d%%\n", bonusDispositivoArma, this.bonusEquipamentosVigor);
-                break;
+                case 7:
+                    this.bonusEquipamentosForca = 7;
+                    this.bonusEquipamentosVigor = 7;
+                    this.bonusEquipamentosCerebro = 7;
+                    this.bonusEquipamentosIntuicao = 7;
+        
+                    System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n");
+                    break;
+                        
+                default:
+                    System.out.println("Valor inválido!");
+                        
+                    this.bonusEquipamentosForca = 0;
+                    this.bonusEquipamentosVigor = 0;
+                    this.bonusEquipamentosCerebro = 0;
+                    this.bonusEquipamentosIntuicao = 0;
+        
+                    System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
+            } // fechamento do switch case   
+        }    
                 
-            case "cerebro":
-                this.bonusEquipamentosCerebro += 7;
-                System.out.printf("Total de bônus no(a) %s: %d%%\n", bonusDispositivoArma, this.bonusEquipamentosCerebro);
-                break;
+        perguntaBonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
+        String perguntaDispoArmaMissil = sc.nextLine();
+        
+        if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) // pergunta bônus de dispositivo + arma ou arma + missil
+        {
+            System.out.println("Em qual habilidade o bônus é acrescentado?");
+            System.out.println("Opções: forca, vigor, cerebro ou intuicao");
+            System.out.println("Observação: digite sem caracteres especiais ou acentos.\n\n");
+            String verifHabilidadeConjDispArmaMissil = sc.nextLine();
+    
+            switch(verifHabilidadeConjDispArmaMissil)
+            {
+                case "forca":
+                    this.bonusEquipamentosForca += 7;
+                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosForca);
+                    break;
+                    
+                case "vigor":
+                    this.bonusEquipamentosVigor += 7;
+                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosVigor);
+                    break;
                 
-            case "intuicao":
-                this.bonusEquipamentosIntuicao += 7;
-                System.out.printf("Total de bônus no(a) %s: %d%%\n", bonusDispositivoArma, this.bonusEquipamentosIntuicao);
-                break;
+                case "cerebro":
+                    this.bonusEquipamentosCerebro += 7;
+                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosCerebro);
+                    break;
+                
+                case "intuicao":
+                    this.bonusEquipamentosIntuicao += 7;
+                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosIntuicao);
+                    break;
+                        
+                default:
+                    System.out.println("Valor inválido!");
+            }
+            return;
         }
-    }
-    
-    
-   
-    
-    
-    
-    public void conjuntoLendarioEquipado() // Método para o conjunto épico que dá bônus de 10% em todas as habilidade básicas do personagem.
-    {
-                this.bonusEquipamentosForca = 10;
-                this.bonusEquipamentosVigor = 10;
-                this.bonusEquipamentosCerebro = 10;
-                this.bonusEquipamentosIntuicao = 10;
-                
-                System.out.println("Todas as habilidades básicas recebem um bônus de 10% de conjunto");
-    }
-    
-    public void conjuntoEpicoEquipado() // Método para o conjunto épico que dá bônus de 7% em todas as habilidade básicas do personagem.
-    {
-        this.bonusEquipamentosForca = 7;
-        this.bonusEquipamentosVigor = 7;
-        this.bonusEquipamentosCerebro = 7;
-        this.bonusEquipamentosIntuicao = 7;
+         
+        perguntaBonusEquipamentos.perguntaConjuntosMistos();
+        String perguntaMist = sc.nextLine();
         
-        System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n");
-    }
-    
-    public void conjuntoEpicoCincoPorcento() // Método para o conjunto épico que dá bônus de 5% em todas as habilidade básicas do personagem.
-    {
-        this.bonusEquipamentosForca = 5;
-        this.bonusEquipamentosVigor = 5;
-        this.bonusEquipamentosCerebro = 5;
-        this.bonusEquipamentosIntuicao = 5;
+        if(perguntaMist.toLowerCase().equals("sim")) // se ele tiver conjuntos mistos equipados 
+        {   
         
-        System.out.printf("Todas as habilidades básicas recebem um bônus de 5%% de conjunto\n");
-    }
-    
-    public void semConjuntoEpicoEquipado() // Método para caso o personagem não tenha um conjunto de equipamentos, o valor do bônus do conjunto é igual a 0 em todas as habilidades.
-    {
-        this.bonusEquipamentosForca = 0;
-        this.bonusEquipamentosVigor = 0;
-        this.bonusEquipamentosCerebro = 0;
-        this.bonusEquipamentosIntuicao = 0;
+            System.out.println("Digite o total de bônus que a seguinte habilidade recebe do conjunto de objetos: ");
+            System.out.println("Observação: se o personagem recebe bônus de diferentes conjuntos na mesma habilidade, como capa+traje(7% na força) e cinto+sapatos(7% na força), some o bônus (7+7, por exemplo) e insira na respectiva habilidade");
+            System.out.println("ATENÇÃO: Não some os bônus de arma, dispositivo e míssil, pois já foram calculados!");
+                    
+            System.out.println("Força básica: ");
+            int pontosObjetosMistosForca = sc.nextInt();
+            sc.nextLine();
+            this.bonusEquipamentosForca += pontosObjetosMistosForca;
+              
+                    
+            System.out.println("Vigor básico: ");
+            int pontosObjetosMistosVigor = sc.nextInt();
+            sc.nextLine();
+            this.bonusEquipamentosVigor += pontosObjetosMistosVigor;
+                    
+                    
+            System.out.println("Cérebro básico: ");
+            int pontosObjetosMistosCerebro = sc.nextInt();
+            sc.nextLine();
+            this.bonusEquipamentosCerebro += pontosObjetosMistosCerebro; 
+              
+                    
+            System.out.println("Intuicao básica: ");
+            int pontosObjetosMistosIntuicao = sc.nextInt();
+            sc.nextLine();
+            this.bonusEquipamentosIntuicao += pontosObjetosMistosIntuicao;
+        }
+        else
+        {
+            this.bonusEquipamentosForca += 0;
+            this.bonusEquipamentosVigor += 0;
+            this.bonusEquipamentosCerebro += 0;
+            this.bonusEquipamentosIntuicao += 0;
         
-        System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
+            System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
+        }         
     }
-    
-    public void semConjuntoEquipado() // Método para caso o personagem não tenha um conjunto de equipamentos, o valor do bônus do conjunto é igual a 0 em todas as habilidades.
-    {
-        this.bonusEquipamentosForca = 0;
-        this.bonusEquipamentosVigor = 0;
-        this.bonusEquipamentosCerebro = 0;
-        this.bonusEquipamentosIntuicao = 0;
-        
-        System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
-    }
-    
-    public void semConjuntoDispositivoArmaMissil() // se o personagem não tiver o conjunto de Dispositivo + arma, o método é chamado.
-    {
-        this.bonusEquipamentosForca  +=0;
-        this.bonusEquipamentosVigor  +=0;
-        this.bonusEquipamentosCerebro +=0;
-        this.bonusEquipamentosIntuicao +=0;
-    }
-    
+
     
     /* Setters para que seja possível alterar o valor das variáveis pela classe Main
     Apenas precisa chamar o método por lá que o valor é alterado

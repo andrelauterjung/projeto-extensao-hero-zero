@@ -49,32 +49,23 @@ public class Main
         
     
         // Calculando o bônus que o energético de habilidade acrescenta nas habilidades básicas do personagem
-        energetico.listaEnergeticos();
+        energetico.verificarEnergetico(sc);
         
-        int opcaoEnergetico = sc.nextInt();
+        int valorBonusEnergeticoHabilidade = energetico.getBonusEnergeticoHabilidade();
         
-        energetico.verificarEnergetico(opcaoEnergetico);
+        bonusTotal.setBonusTotalForca(valorBonusEnergeticoHabilidade); 
+        bonusTotal.setBonusTotalVigor(valorBonusEnergeticoHabilidade);
+        bonusTotal.setBonusTotalCerebro(valorBonusEnergeticoHabilidade);
+        bonusTotal.setBonusTotalIntuicao(valorBonusEnergeticoHabilidade);
         
-        //Armazenar o valor do bônus de energético em todas variáveis da classe BonusTotal
-        int bonusEnergeticoPersonagem = energetico.getBonusEnergeticoHabilidade();
         
-        
-        bonusTotal.setBonusTotalForca(bonusEnergeticoPersonagem); 
-        bonusTotal.setBonusTotalVigor(bonusEnergeticoPersonagem);
-        bonusTotal.setBonusTotalCerebro(bonusEnergeticoPersonagem);
-        bonusTotal.setBonusTotalIntuicao(bonusEnergeticoPersonagem);
-        
+        System.out.printf("O personagem recebe um bônus de %d%% do Energético de habilidade!", valorBonusEnergeticoHabilidade);
         System.out.printf("\n***************************************************************************\n\n");
+        
         // Calculando o bônus que a Liga acrescenta nas habilidades básicas do personagem.
-        liga.listaLigas();
-        
-        int opcaoLiga = sc.nextInt();
-        sc.nextLine(); // Para consumir o Enter
-        
-        liga.verificarLiga(opcaoLiga);
+        liga.verificarLiga(sc);
         
         //Armazenar o valor do bônus de liga em todas as variáveis da classe BonusTotal
-        
         int bonusLigaPersonagem = liga.getBonusLiga();
         
         bonusTotal.setBonusTotalForca(bonusLigaPersonagem);
@@ -82,57 +73,26 @@ public class Main
         bonusTotal.setBonusTotalCerebro(bonusLigaPersonagem);
         bonusTotal.setBonusTotalIntuicao(bonusLigaPersonagem);
         
+        System.out.printf("O personagem recebe um bônus de Liga de %d%% nas habilidades!", bonusLigaPersonagem);
         System.out.printf("\n***************************************************************************\n\n");
+
         
+        // Calcular bônus que o time atribui às habilidades básica
+        time.verificarBonusTime(sc);
+       
+        int bonusTimePersonagem = time.getBonusTime();
         
-        // Calcular bônus que o time atribui às habilidades básicas
+        bonusTotal.setBonusTotalForca(bonusTimePersonagem);
+        bonusTotal.setBonusTotalVigor(bonusTimePersonagem);
+        bonusTotal.setBonusTotalCerebro(bonusTimePersonagem);
+        bonusTotal.setBonusTotalIntuicao(bonusTimePersonagem);  
         
-        System.out.println("O jogador está em uma equipe?");
-        System.out.println("Digite 'sim' ou 'não' ");
-        String analiseJogadorEquipe = sc.nextLine();
-        
-        String editAnaliseJogadorEquipe = analiseJogadorEquipe.toLowerCase(); // transforma toda a String em letras minúsculas e atribui a uma nova variável
-        
-        if(editAnaliseJogadorEquipe.equals("sim"))
-        {
-            time.mensagemTime();
-            int valorBonusTime = sc.nextInt();
-            
-            time.verificarBonusTime(valorBonusTime);
-            
-            //Armazenar o valor do bônus de time em todas as variáveis classe BonusTotal
-            int personagemTimeBonus = time.getBonusTime();
-            
-            bonusTotal.setBonusTotalForca(valorBonusTime);
-            bonusTotal.setBonusTotalVigor(valorBonusTime);
-            bonusTotal.setBonusTotalCerebro(valorBonusTime);
-            bonusTotal.setBonusTotalIntuicao(valorBonusTime);
-            
-            
-        }
-        else 
-        {
-            time.semTime();
-            
-            int personagemSemTimeBonus = time.getBonusTime();
-            
-            bonusTotal.setBonusTotalForca(personagemSemTimeBonus);
-            bonusTotal.setBonusTotalVigor(personagemSemTimeBonus);
-            bonusTotal.setBonusTotalCerebro(personagemSemTimeBonus);
-            bonusTotal.setBonusTotalIntuicao(personagemSemTimeBonus);
-            
-        }
-        
-        
+        System.out.printf("O personagem recebe um bônus de Time de %d%% nas habilidades!", bonusTimePersonagem);
         System.out.printf("\n***************************************************************************\n");
         
+        
         // Calculando bônus que o Laboratório de Pesquisa cibernético acrescenta às habilidades básicas do personagem.
-        
-        esconderijo.listaNiveisLaboratorioCibernetico();
-        
-        int valorEntradaBonusEsconderijo = sc.nextInt();
-        
-        esconderijo.verificarBonusEsconderijo(valorEntradaBonusEsconderijo);
+        esconderijo.verificarBonusEsconderijo(sc);
         
         //Armazenar o valor do bônus de esconderijo em todas as variáveis classe BonusTotal
         int personagemBonusEsconderijo = esconderijo.getBonusEsconderijo();
@@ -142,20 +102,12 @@ public class Main
         bonusTotal.setBonusTotalCerebro(personagemBonusEsconderijo);
         bonusTotal.setBonusTotalIntuicao(personagemBonusEsconderijo);
         
-        
+        System.out.printf("O personagem recebe um bônus de Esconderijo de %d%% nas habilidades!", personagemBonusEsconderijo);
         System.out.printf("\n***************************************************************************\n\n");
         
+        
         // Calcular bônus da habilidade do pet
-        
-        habilidadePet.perguntaHabilidadePet();
-        
-        habilidadePet.listaHabilidadePets();
-        int escolhaHabilidadePet = sc.nextInt();
-        
-        
-        habilidadePet.escolhaHabilidade(escolhaHabilidadePet);
-        sc.nextLine(); 
-        
+        habilidadePet.escolhaHabilidade(sc);
         
         //Armazenar o valor do bônus de pet em todas as variáveis classe BonusTotal
         int personagemBonusPetForca = habilidadePet.getBonusPetForca();
@@ -168,160 +120,35 @@ public class Main
         bonusTotal.setBonusTotalCerebro(personagemBonusPetCerebro);
         bonusTotal.setBonusTotalIntuicao(personagemBonusPetIntuicao);
         
-        
+        System.out.printf("O personagem recebe um bônus de Pet de %d%% na força básica!", personagemBonusPetForca);
+        System.out.printf("O personagem recebe um bônus de Pet de %d%% no vigor básico!", personagemBonusPetVigor);
+        System.out.printf("O personagem recebe um bônus de Pet de %d%% no cérebro básico!", personagemBonusPetCerebro);
+        System.out.printf("O personagem recebe um bônus de Pet de %d%% na intuição básica!", personagemBonusPetIntuicao);
         System.out.printf("\n***************************************************************************\n\n");
+        
         
         // Calcular o bônus de temporada
+        temporada.verificacaoBonusTemporada(sc);
+            
+        //Armazenar o valor do bônus de temporada em todas as variáveis classe BonusTotal
         
-        String verificarTemporada;
+        int valorBonusTemporadaForca = temporada.getBonusTemporadaForca();
+        int valorBonusTemporadaVigor = temporada.getBonusTemporadaVigor();
+        int valorBonusTemporadaCerebro = temporada.getBonusTemporadaCerebro();
+        int valorBonusTemporadaIntuicao = temporada.getBonusTemporadaIntuicao();
         
-        temporada.perguntaTemporadaHabilidade(); // chamo o método que contém a pergunta
-        verificarTemporada = sc.nextLine().toLowerCase(); // armazeno "sim" ou "não", já ficando com letras minúsculas.
-        
-        if(verificarTemporada.equals("sim"))
-        {
-            temporada.bonusNomeHabilidadeBasica(); // se for true, este método é chamado. Assim, é perguntada a habilidade que a temporada influencia
-            String nomeHabilidade = sc.nextLine().toLowerCase(); // aqui armazena a resposta, "forca" por exemplo;
+        bonusTotal.setBonusTotalForca(valorBonusTemporadaForca);
+        bonusTotal.setBonusTotalVigor(valorBonusTemporadaVigor);
+        bonusTotal.setBonusTotalCerebro(valorBonusTemporadaCerebro);
+        bonusTotal.setBonusTotalIntuicao(valorBonusTemporadaIntuicao);
             
-            temporada.bonusTemporadaHabilidade(); // chamo o método onde pergunta o valor do bônus
-            int valorEntradaBonusTemporada = sc.nextInt(); // Aqui armazena o valor
-            sc.nextLine();
-            
-            temporada.verificacaoBonusTemporada(nomeHabilidade, valorEntradaBonusTemporada);
-            // e aqui, passando os dois valores coletados acima, chamo o método onde vai ocorrer a verificação e assim retornar a resposta. 
-            
-            //Armazenar o valor do bônus de temporada em todas as variáveis classe BonusTotal
-            int valorBonusTemporadaForca = temporada.getBonusTemporadaForca();
-            int valorBonusTemporadaVigor = temporada.getBonusTemporadaVigor();
-            int valorBonusTemporadaCerebro = temporada.getBonusTemporadaCerebro();
-            int valorBonusTemporadaIntuicao = temporada.getBonusTemporadaIntuicao();
-            
-            bonusTotal.setBonusTotalForca(valorBonusTemporadaForca);
-            bonusTotal.setBonusTotalVigor(valorBonusTemporadaVigor);
-            bonusTotal.setBonusTotalCerebro(valorBonusTemporadaCerebro);
-            bonusTotal.setBonusTotalIntuicao(valorBonusTemporadaIntuicao);
-            
-            
-        }
-        else
-        {
-           temporada.semBonusTemporada(); // só roda se a temporada não influenciar em nada as habilidades básicas. 
-        }      
-        
+               
         System.out.printf("\n***************************************************************************\n\n");
         
+        
+        
         // Calcular bônus do conjunto de equipamentos.
-        
-        bonusEquipamentos.perguntaConjuntoLendario();
-        String pergunta = sc.nextLine();
-        
-        if(pergunta.toLowerCase().equals("sim")) 
-        {
-            bonusEquipamentos.conjuntoLendarioEquipado(); // pergunta se o jogador tem conjunto lendário completo
-        }
-        else if(pergunta.toLowerCase().equals("nao")) // caso ele não tenha conjunto lendário completo, passa a perguntar sobre conjunto épico
-        {
-            bonusEquipamentos.perguntaConjuntoEpico();
-            pergunta = sc.nextLine();
-            
-            if(pergunta.toLowerCase().equals("sim"))
-            {
-                System.out.println("O conjunto épico acrescenta bônus de 5% ou 7% às habilidades básicas do personagem?");
-                int verificacaoTipoConjEpico = sc.nextInt();
-                sc.nextLine();
-                
-                switch(verificacaoTipoConjEpico)
-                {
-                    case 5:
-                        bonusEquipamentos.conjuntoEpicoCincoPorcento();
-                    break;
-                    
-                    case 7:
-                        bonusEquipamentos.conjuntoEpicoEquipado();
-                        break;
-                }   
-                    bonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
-                    String perguntaDispoArmaMissil = sc.nextLine();
-        
-                    if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) // pergunta bônus de dispositivo + arma ou arma + missil
-                    {
-                        System.out.println("Em qual habilidade o bônus é acrescentado?");
-                        System.out.println("Opções: forca, vigor, cerebro ou intuicao");
-                        System.out.println("Observação: digite sem caracteres especiais ou acentos.\n\n");
-                        String verificacaoHabilidadeConjDispoArmaMissil = sc.nextLine();
-            
-                        bonusEquipamentos.perguntaConjuntoDispositivoArmaMissil(verificacaoHabilidadeConjDispoArmaMissil);
-                    }
-                    else
-                    {
-                        bonusEquipamentos.semConjuntoDispositivoArmaMissil();
-                    }
-            }
-            
-            
-            
-            else if(pergunta.toLowerCase().equals("nao")) // se ele não tiver conjunto épico completo 
-            {   
-                bonusEquipamentos.perguntaConjuntosMistos(); 
-                System.out.println("Digite 'sim' ou 'nao' ");
-                String perguntaConjuntoEquipMistos = sc.nextLine();
-            
-                if(perguntaConjuntoEquipMistos.toLowerCase().equals("sim"))
-                {
-                    System.out.println("Digite o total de bônus que a seguinte habilidade recebe do conjunto de objetos: ");
-                    System.out.println("Observação: se o personagem recebe bônus de diferentes conjuntos na mesma habilidade, como capa+traje(7% na força) e cinto+sapatos(7% na força), some o bônus (7+7, por exemplo) e insira na respectiva habilidade");
-                    
-                    
-                    System.out.println("Força básica: ");
-                    int pontosObjetosMistosForca = sc.nextInt();
-                    sc.nextLine();
-                    bonusEquipamentos.setForca(pontosObjetosMistosForca);
-                    
-                    System.out.println("Vigor básico: ");
-                    int pontosObjetosMistosVigor = sc.nextInt();
-                    sc.nextLine();
-                    bonusEquipamentos.setVigor(pontosObjetosMistosVigor);
-                    
-                    System.out.println("Cérebro básico: ");
-                    int pontosObjetosMistosCerebro = sc.nextInt();
-                    sc.nextLine();
-                    bonusEquipamentos.setCerebro(pontosObjetosMistosCerebro);
-                    
-                    System.out.println("Intuicao básica: ");
-                    int pontosObjetosMistosIntuicao = sc.nextInt();
-                    sc.nextLine();
-                    bonusEquipamentos.setIntuicao(pontosObjetosMistosIntuicao);
-            }
-            else
-            {
-                bonusEquipamentos.semConjuntoEquipado(); // como não vai ter nenhum bonus de conjunto, posso reaproveitar o método.
-            }   
-              
-        }
-        
-        
-        System.out.printf("\n\n");
-        /*System.out.println("Resultado final dos bônus de conjunto: ");
-        
-        int finalBonusForcaConjuntoEquipamentos = bonusEquipamentos.getForca();
-        int finalBonusVigorConjuntoEquipamentos = bonusEquipamentos.getVigor();
-        int finalBonusCerebroConjuntoEquipamentos = bonusEquipamentos.getCerebro();
-        int finalBonusIntuicaoConjuntoEquipamentos = bonusEquipamentos.getIntuicao();
-        
-        
-        
-        //Armazenar o valor do bônus de conjunto em todas as variáveis classe BonusTotal
-        bonusTotal.setBonusTotalForca(finalBonusForcaConjuntoEquipamentos);
-        bonusTotal.setBonusTotalVigor(finalBonusVigorConjuntoEquipamentos);
-        bonusTotal.setBonusTotalCerebro(finalBonusCerebroConjuntoEquipamentos);
-        bonusTotal.setBonusTotalIntuicao(finalBonusIntuicaoConjuntoEquipamentos);
-        
-        System.out.printf("Força: %d%%\n", finalBonusForcaConjuntoEquipamentos );
-        System.out.printf("Vigor: %d%%\n", finalBonusVigorConjuntoEquipamentos);
-        System.out.printf("Cerebro: %d%%\n", finalBonusCerebroConjuntoEquipamentos);
-        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);*/
-        
-        }
+        bonusEquipamentos.verificarConjuntos(sc);
         System.out.println("Resultado final dos bônus de conjunto: ");
         
         int finalBonusForcaConjuntoEquipamentos = bonusEquipamentos.getForca();
@@ -336,12 +163,10 @@ public class Main
         bonusTotal.setBonusTotalCerebro(finalBonusCerebroConjuntoEquipamentos);
         bonusTotal.setBonusTotalIntuicao(finalBonusIntuicaoConjuntoEquipamentos);
         
-        System.out.printf("Força: %d%%\n", finalBonusForcaConjuntoEquipamentos );
+        System.out.printf("Força: %d%%\n", finalBonusForcaConjuntoEquipamentos);
         System.out.printf("Vigor: %d%%\n", finalBonusVigorConjuntoEquipamentos);
         System.out.printf("Cerebro: %d%%\n", finalBonusCerebroConjuntoEquipamentos);
-        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);
-       
-        
+        System.out.printf("Intuicao: %d%%\n", finalBonusIntuicaoConjuntoEquipamentos);       
         System.out.printf("***************************************************************************\n\n");
         
         
@@ -624,7 +449,7 @@ public class Main
                 
                 
                 // Perguntar e armazernar o valor total de pontos de intuição que os sapatos acrescenta, às habilidades do personagem
-                atributosEquipamentosPet.mensagemIntuiçãoItemSapatos();
+                atributosEquipamentosPet.mensagemIntuicaoItemSapatos();
                 int atributoIntuicaoEquipamentosSapatos = sc.nextInt();
                 
                 

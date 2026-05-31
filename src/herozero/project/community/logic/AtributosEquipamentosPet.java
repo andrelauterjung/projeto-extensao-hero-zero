@@ -1,5 +1,12 @@
 package herozero.project.community.logic;
 
+
+/**
+ * Classe com métodos que perguntam informações ao usuário e armazenam valores referentes
+ * aos atributos dos equipamentos que o personagem está usando.
+ * 
+ * @author André Lauterjung
+ */
 public class AtributosEquipamentosPet
 {
     private int totalAtributosForcaEquipamentosPet;
@@ -152,7 +159,7 @@ public class AtributosEquipamentosPet
         System.out.println("Qual o total de pontos de intuição que o cinto acrescenta às habilidades do personagem?");
     }
     
-    public void mensagemIntuiçãoItemSapatos()
+    public void mensagemIntuicaoItemSapatos()
     {
         System.out.println("Qual o total de pontos de intuição que os sapatos acrescentam às habilidades do personagem?");
     }
