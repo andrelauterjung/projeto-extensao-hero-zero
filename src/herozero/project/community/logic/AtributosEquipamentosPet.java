@@ -1,7 +1,7 @@
 package herozero.project.community.logic;
 
 import herozero.project.community.view.AtributosObjetosPetView;
-
+import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
 /**
@@ -18,7 +18,7 @@ public class AtributosEquipamentosPet
     private int totalAtributosIntuicaoEquipamentosPet;
     
     
-    public void calcularAtributosEquipPet(Scanner sc, HabilidadeTotal habilidadeTotal)
+    public void calcularAtributosEquipPet(Scanner sc, HabilidadeTotalLogic habilidadeTotal, FichaPersonagem fichaPersonagem)
     {
         AtributosObjetosPetView perguntasAtributosEquipPet = new AtributosObjetosPetView();        
         
@@ -34,7 +34,9 @@ public class AtributosEquipamentosPet
         switch(pergunta.toLowerCase())
         {
             /* Chama as perguntas da classe AtributosObjetosPetView referentes a
-            força que os objetos acrescentam às habilidades do personagem. */
+            força que os objetos acrescentam às habilidades do personagem. 
+            
+            Após isso, o usuário digita o total de atributos ao respectivo objeto*/
             case "forca":
                 // Item: Capa
                 perguntasAtributosEquipPet.mensagemForcaItemCapa();
@@ -42,6 +44,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCapa;
+                
             
             
                 // Item: Traje
@@ -50,7 +53,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipTraje;
-            
+                
             
                 // Item: Cinto
                 perguntasAtributosEquipPet.mensagemForcaItemCinto();
@@ -58,7 +61,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCinto;
-            
+                
             
                 // Item: Sapatos
                 perguntasAtributosEquipPet.mensagemForcaItemSapatos();
@@ -66,7 +69,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipSapatos;
-            
+                
             
                 // Item: Máscara
                 perguntasAtributosEquipPet.mensagemForcaItemMascara();
@@ -74,7 +77,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipMascara;
-            
+                
             
                 // Item: Dispositivo
                 perguntasAtributosEquipPet.mensagemForcaItemDispositivo();
@@ -82,7 +85,7 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipDispositivo;
-            
+                
             
                 // Item: Arma
                 perguntasAtributosEquipPet.mensagemForcaItemArma();
@@ -90,18 +93,26 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
                 
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipArma;
-            
+                
+                
                 // Item: Pet
                 perguntasAtributosEquipPet.mensagemForcaItemPet();
                 int atributoForcaEquipPet = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipPet;
+                
+                
+                
+                fichaPersonagem.getAtributosEquipPet().setForcaEquipamentosPet(this.totalAtributosForcaEquipamentosPet);
+                
                 break;
         
                 
             /* Chama as perguntas da classe AtributosObjetosPetView referentes ao
-            vigor que os objetos acrescentam às habilidades do personagem. */    
+            vigor que os objetos acrescentam às habilidades do personagem. 
+                
+            Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "vigor":
                 // Item: Capa
                 perguntasAtributosEquipPet.mensagemVigorItemCapa();
@@ -118,13 +129,14 @@ public class AtributosEquipamentosPet
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipTraje;
                 
+                
                 // Item: Cinto
                 perguntasAtributosEquipPet.mensagemVigorItemCinto();
                 int atributoVigorEquipCinto = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCinto;
-
+                
 
                 // Item: Sapatos
                 perguntasAtributosEquipPet.mensagemVigorItemSapatos();
@@ -164,8 +176,15 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipPet;       
-                break;
                 
+                
+                fichaPersonagem.getAtributosEquipPet().setVigorEquipamentosPet(this.totalAtributosVigorEquipamentosPet);
+                break;
+            
+            /* Chama as perguntas da classe AtributosObjetosPetView referentes ao
+            cérebro que os objetos acrescentam às habilidades do personagem. 
+                
+            Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "cerebro":
                 // Item: Capa
                 perguntasAtributosEquipPet.mensagemCerebroItemCapa();
@@ -229,9 +248,16 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipPet;
+                
+                
+                fichaPersonagem.getAtributosEquipPet().setCerebroEquipamentosPet(this.totalAtributosCerebroEquipamentosPet);
                 break;
                 
+            
+            /* Chama as perguntas da classe AtributosObjetosPetView referentes a
+            intuição que os objetos acrescentam às habilidades do personagem. 
                 
+            Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "intuicao":
                 // Item: Capa
                 perguntasAtributosEquipPet.mensagemIntuicaoItemCapa();
@@ -280,6 +306,7 @@ public class AtributosEquipamentosPet
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipDispositivo;
                 
+                
                 // Item: Arma
                 perguntasAtributosEquipPet.mensagemIntuicaoItemArma();
                 int atributoIntuicaoEquipArma = sc.nextInt();
@@ -294,56 +321,21 @@ public class AtributosEquipamentosPet
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipPet;
+                
+                
+                
+                fichaPersonagem.getAtributosEquipPet().setIntuicaoEquipamentosPet(this.totalAtributosIntuicaoEquipamentosPet);
                 break;
                 
             default:
+                fichaPersonagem.getAtributosEquipPet().setForcaEquipamentosPet(0);
+                fichaPersonagem.getAtributosEquipPet().setVigorEquipamentosPet(0);
+                fichaPersonagem.getAtributosEquipPet().setCerebroEquipamentosPet(0);
+                fichaPersonagem.getAtributosEquipPet().setIntuicaoEquipamentosPet(0);
                 System.out.println("Habilidade indisponível!");
                 
         } // fechamento do switch case
         
     } // fechamento do método calcularAtributosEquipPet
     
-    
-    // Métodos setters
-    public void setForcaEquipamentosPet(int forcaEquipamentosPet)
-    {
-        this.totalAtributosForcaEquipamentosPet += forcaEquipamentosPet;
-    }
-    
-    public void setVigorEquipamentosPet(int vigorEquipamentosPet)
-    {
-        this.totalAtributosVigorEquipamentosPet += vigorEquipamentosPet;
-    }
-    
-    public void setCerebroEquipamentosPet(int cerebroEquipamentosPet)
-    {
-        this.totalAtributosCerebroEquipamentosPet += cerebroEquipamentosPet;
-    }
-    
-    public void setIntuicaoEquipamentosPet(int intuicaoEquipamentosPet)
-    {
-        this.totalAtributosIntuicaoEquipamentosPet += intuicaoEquipamentosPet;
-    }
-    
-    
-    //Métodos getters
-    public int getForcaTotalEquipamentosPet()
-    {
-        return this.totalAtributosForcaEquipamentosPet;
-    }
-    
-    public int getVigorTotalEquipamentosPet()
-    {
-        return this.totalAtributosVigorEquipamentosPet;
-    }
-    
-    public int getCerebroTotalEquipamentosPet()
-    {
-        return this.totalAtributosCerebroEquipamentosPet;
-    }
-    
-    public int getIntuicaoTotalEquipamentosPet()
-    {
-        return this.totalAtributosIntuicaoEquipamentosPet;
-    }
 } // fechamento da classe

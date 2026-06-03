@@ -1,21 +1,21 @@
 package herozero.project.community.logic;
 
 import herozero.project.community.view.BonusLeagueView;
+import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
+
 /**
- * Classe com métodos que retornam informações ao usuário e armazena valor 
- * referente ao bônus de liga que o personagem recebe.
+ * Classe com método que armazena valor referente ao bônus de liga que o 
+ * personagem recebe.
  * 
  * @author André Lauterjung
  */
 public class Liga
 {
-    private int bonusLiga;
-    
     BonusLeagueView perguntaLiga = new BonusLeagueView();
     
-    public void verificarLiga(Scanner sc)
+    public void verificarLiga(Scanner sc, FichaPersonagem fichaPersonagem)
     {
         perguntaLiga.listaLigas();
         int opcaoLiga = sc.nextInt();
@@ -24,78 +24,141 @@ public class Liga
         switch(opcaoLiga)
         {
             case 0:
-                this.bonusLiga = 0;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
+                
+                System.out.println("O jogador recebe 0% de bônus da liga em todas as habilidades básicas!");    
                 break;
                 
             case 1:
-                this.bonusLiga = 3;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(3);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(3);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(3);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(3);
+                
+                System.out.println("O jogador recebe 3% de bônus da liga em todas as habilidades básicas!"); 
                 break;
             
             case 2:
-                this.bonusLiga = 6;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(6);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(6);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(6);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(6);
+                
+                System.out.println("O jogador recebe 6% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
             case 3:
-                this.bonusLiga = 9;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(9);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(9);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(9);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(9);
+                
+                System.out.println("O jogador recebe 9% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
             case 4:
-                this.bonusLiga =12;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(12);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(12);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(12);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(12);
+                
+                System.out.println("O jogador recebe 12% de bônus da liga em todas as habilidades básicas!");
                 break;
             
             case 5:
-                this.bonusLiga = 15;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(15);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(15);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(15);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(15);
+                
+                System.out.println("O jogador recebe 15% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
-            case 6:
-                this.bonusLiga = 18;
+            case 6: //18
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(18);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(18);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(18);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(18);
+                
+                System.out.println("O jogador recebe 18% de bônus da liga em todas as habilidades básicas!");
                 break;
             
-            case 7:
-                this.bonusLiga = 21;
+            case 7: 
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(21);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(21);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(21);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(21);
+                
+                System.out.println("O jogador recebe 21% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
             case 8:
-                this.bonusLiga = 24;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(24);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(24);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(24);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(24);
+                
+                System.out.println("O jogador recebe 24% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
             case 9:
-                this.bonusLiga = 27;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(27);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(27);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(27);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(27);
+                
+                System.out.println("O jogador recebe 27% de bônus da liga em todas as habilidades básicas!");
                 break;
             
             case 10:
-                this.bonusLiga = 30;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(30);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(30);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(30);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(30);
+                
+                System.out.println("O jogador recebe 30% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
              case 11:
-                 this.bonusLiga = 33;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(33);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(33);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(33);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(33);
+                
+                System.out.println("O jogador recebe 33% de bônus da liga em todas as habilidades básicas!"); 
                 break;
                 
             case 12:
-                this.bonusLiga = 36;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(36);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(36);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(36);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(36);
+                
+                System.out.println("O jogador recebe 36% de bônus da liga em todas as habilidades básicas!");
                 break;
             
             case 13:
-                this.bonusLiga = 39;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(39);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(39);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(39);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(39);
+                
+                System.out.println("O jogador recebe 39% de bônus da liga em todas as habilidades básicas!");
                 break;
                 
             default:
-                this.bonusLiga = 0;
-        }
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
+                
+                System.out.println("O jogador recebe 0% de bônus da liga em todas as habilidades básicas!");    
         
-        System.out.printf("O personagem possui %d%% de bônus de liga!\n", this.bonusLiga);
-    }
+        } // Fechamento do switch case.
+       
+    } // Fechamento do método verificarLiga. 
     
-    
-    // Método Setter
-    public void setBonusLiga(int valorBonusLiga)
-    {
-        this.bonusLiga += valorBonusLiga;
-    }
-    
-    // Método Getter
-    public int getBonusLiga()
-    {
-        return this.bonusLiga;
-    }    
-}
+} // Fechamento da classe.
