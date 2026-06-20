@@ -4,7 +4,7 @@ import herozero.project.community.view.BonusLeagueView;
 import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 /**
  * Classe com método que armazena valor referente ao bônus de liga que o 
  * personagem recebe.
@@ -20,6 +20,7 @@ public class Liga
         perguntaLiga.listaLigas();
         int opcaoLiga = sc.nextInt();
         sc.nextLine();
+
         
         switch(opcaoLiga)
         {

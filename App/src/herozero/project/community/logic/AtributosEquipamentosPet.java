@@ -1,14 +1,15 @@
 package herozero.project.community.logic;
 
 import herozero.project.community.view.AtributosObjetosPetView;
-import herozero.project.community.model.FichaPersonagem;
+import herozero.project.community.model.FichaPersonagem; 
 
 import java.util.Scanner;
 /**
- * Classe com métodos que perguntam informações ao usuário e armazenam valores referentes
- * aos atributos dos equipamentos que o personagem está usando.
+ * Classe com método que pergunta informações ao usuário e armazena valores 
+ * referentes aos atributos dos equipamentos e do pet que o personagem está equipado.
  * 
  * @author André Lauterjung
+ * 
  */
 public class AtributosEquipamentosPet
 {
@@ -22,14 +23,13 @@ public class AtributosEquipamentosPet
     {
         AtributosObjetosPetView perguntasAtributosEquipPet = new AtributosObjetosPetView();        
         
-        
-        String pergunta = habilidadeTotal.getRespHabTotalText();
         /* A variável pergunta pega a mesma resposta do nome da habilidade total
         que o usuário digitou anteriormente e aproveita para ser usada nesta classe
         seguindo uma ordem para o cálculo das habilidaddes. 
         
         Ou seja, se anteriormente ele digitou a força total, em seguida ele
-        vai digitar os pontos de força que os equipamentos e pet acrescentam às habilidades*/
+        vai digitar os pontos de força que os equipamentos e pet acrescentam às habilidades. */
+        String pergunta = habilidadeTotal.getRespHabTotalText();
         
         switch(pergunta.toLowerCase())
         {
@@ -38,64 +38,56 @@ public class AtributosEquipamentosPet
             
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/
             case "forca":
-                // Item: Capa
+                // Item: Capa.
                 perguntasAtributosEquipPet.mensagemForcaItemCapa();
                 int atributoForcaEquipCapa = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCapa;
                 
-            
-            
-                // Item: Traje
+                // Item: Traje.
                 perguntasAtributosEquipPet.mensagemForcaItemTraje();
                 int atributoForcaEquipTraje = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipTraje;
                 
-            
-                // Item: Cinto
+                // Item: Cinto.
                 perguntasAtributosEquipPet.mensagemForcaItemCinto();
                 int atributoForcaEquipCinto = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCinto;
                 
-            
-                // Item: Sapatos
+                // Item: Sapatos.
                 perguntasAtributosEquipPet.mensagemForcaItemSapatos();
                 int atributoForcaEquipSapatos = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipSapatos;
                 
-            
-                // Item: Máscara
+                // Item: Máscara.
                 perguntasAtributosEquipPet.mensagemForcaItemMascara();
                 int atributoForcaEquipMascara = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipMascara;
                 
-            
-                // Item: Dispositivo
+                // Item: Dispositivo.
                 perguntasAtributosEquipPet.mensagemForcaItemDispositivo();
                 int atributoForcaEquipDispositivo = sc.nextInt();
                 sc.nextLine();
             
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipDispositivo;
-                
-            
-                // Item: Arma
+                     
+                // Item: Arma.
                 perguntasAtributosEquipPet.mensagemForcaItemArma();
                 int atributoForcaEquipArma = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipArma;
                 
-                
-                // Item: Pet
+                // Item: Pet.
                 perguntasAtributosEquipPet.mensagemForcaItemPet();
                 int atributoForcaEquipPet = sc.nextInt();
                 sc.nextLine();
@@ -103,7 +95,8 @@ public class AtributosEquipamentosPet
                 this.totalAtributosForcaEquipamentosPet += atributoForcaEquipPet;
                 
                 
-                
+                /* Adiciona o valor total dos pontos de força dos equipamentos e 
+                pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setForcaEquipamentosPet(this.totalAtributosForcaEquipamentosPet);
                 
                 break;
@@ -114,142 +107,131 @@ public class AtributosEquipamentosPet
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "vigor":
-                // Item: Capa
+                // Item: Capa.
                 perguntasAtributosEquipPet.mensagemVigorItemCapa();
                 int atributoVigorEquipCapa = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCapa;
                 
-                
-                // Item: Traje
+                // Item: Traje.
                 perguntasAtributosEquipPet.mensagemVigorItemTraje();
                 int atributoVigorEquipTraje = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipTraje;
                 
-                
-                // Item: Cinto
+                // Item: Cinto.
                 perguntasAtributosEquipPet.mensagemVigorItemCinto();
                 int atributoVigorEquipCinto = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCinto;
                 
-
-                // Item: Sapatos
+                // Item: Sapatos.
                 perguntasAtributosEquipPet.mensagemVigorItemSapatos();
                 int atributoVigorEquipSapatos = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipSapatos;
                 
-                
-                // Item: Máscara
+                // Item: Máscara.
                 perguntasAtributosEquipPet.mensagemVigorItemMascara();
                 int atributoVigorEquipMascara = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipMascara;
                 
-                
-                // Item: Dispositivo
+                // Item: Dispositivo.
                 perguntasAtributosEquipPet.mensagemVigorItemDispositivo();
                 int atributoVigorEquipDispositivo = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipDispositivo;
-                
-                
-                // Item: Arma
+                      
+                // Item: Arma.
                 perguntasAtributosEquipPet.mensagemVigorItemArma();
                 int atributoVigorEquipArma = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipArma;
-                
-                
-                // Item: Pet
+                              
+                // Item: Pet.
                 perguntasAtributosEquipPet.mensagemVigorItemPet();
                 int atributoVigorEquipPet = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosVigorEquipamentosPet += atributoVigorEquipPet;       
                 
-                
+                /* Adiciona o valor total dos pontos de vigor dos equipamentos e 
+                pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setVigorEquipamentosPet(this.totalAtributosVigorEquipamentosPet);
                 break;
             
+                              
             /* Chama as perguntas da classe AtributosObjetosPetView referentes ao
             cérebro que os objetos acrescentam às habilidades do personagem. 
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "cerebro":
-                // Item: Capa
+                // Item: Capa.
                 perguntasAtributosEquipPet.mensagemCerebroItemCapa();
                 int atributoCerebroEquipCapa = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCapa;
-                
-                
-                // Item: Traje
+                  
+                // Item: Traje.
                 perguntasAtributosEquipPet.mensagemCerebroItemTraje();
                 int atributoCerebroEquipTraje = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipTraje;
-                
-                
-                // Item: Cinto
+                  
+                // Item: Cinto.
                 perguntasAtributosEquipPet.mensagemCerebroItemCinto();
                 int atributoCerebroEquipCinto = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCinto;
-                
-                
-                // Item: Sapatos
+                       
+                // Item: Sapatos.
                 perguntasAtributosEquipPet.mensagemCerebroItemSapatos();
                 int atributoCerebroEquipSapatos = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipSapatos;
                 
-                
-                // Item: Máscara
+                // Item: Máscara.
                 perguntasAtributosEquipPet.mensagemCerebroItemMascara();
                 int atributoCerebroEquipMascara = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipMascara;
-                
-                
-                // Item: Dispositivo
+                 
+                // Item: Dispositivo.
                 perguntasAtributosEquipPet.mensagemCerebroItemDispositivo();
                 int atributoCerebroEquipDispositivo = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipDispositivo;
                 
-                
-                // Item: Arma
+                // Item: Arma.
                 perguntasAtributosEquipPet.mensagemCerebroItemArma();
                 int atributoCerebroEquipArma = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipArma;
-                
-                
-                // Item: Pet
+                  
+                // Item: Pet.
                 perguntasAtributosEquipPet.mensagemCerebroItemPet();
                 int atributoCerebroEquipPet = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipPet;
                 
-                
+                /* Adiciona o valor total dos pontos de cérebro dos equipamentos
+                e pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setCerebroEquipamentosPet(this.totalAtributosCerebroEquipamentosPet);
                 break;
                 
@@ -259,63 +241,56 @@ public class AtributosEquipamentosPet
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "intuicao":
-                // Item: Capa
+                // Item: Capa.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemCapa();
                 int atributoIntuicaoEquipCapa = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCapa;
-                
-                
-                // Item: Traje
+                        
+                // Item: Traje.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemTraje();
                 int atributoIntuicaoEquipTraje = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipTraje;
-                
-                
-                // Item: Cinto
+                     
+                // Item: Cinto.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemCinto();
                 int atributoIntuicaoEquipCinto = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCinto;
-                
-                
-                // Item: Sapatos
+                   
+                // Item: Sapatos.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemSapatos();
                 int atributoIntuicaoEquipSapatos = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipSapatos;
                 
-                
-                // Item: Máscara
+                // Item: Máscara.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemMascara();
                 int atributoIntuicaoEquipMascara = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipMascara;
-                
-                
-                // Item: Dispositivo
+                 
+                // Item: Dispositivo.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemDispositivo();
                 int atributoIntuicaoEquipDispositivo = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipDispositivo;
                 
-                
-                // Item: Arma
+                // Item: Arma.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemArma();
                 int atributoIntuicaoEquipArma = sc.nextInt();
                 sc.nextLine();
                 
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipArma;
                 
-                
-                // Item: Pet
+                // Item: Pet.
                 perguntasAtributosEquipPet.mensagemIntuicaoItemPet();
                 int atributoIntuicaoEquipPet = sc.nextInt();
                 sc.nextLine();
@@ -323,7 +298,8 @@ public class AtributosEquipamentosPet
                 this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipPet;
                 
                 
-                
+                /* Adiciona o valor total dos pontos de intuição dos equipamentos
+                e pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setIntuicaoEquipamentosPet(this.totalAtributosIntuicaoEquipamentosPet);
                 break;
                 

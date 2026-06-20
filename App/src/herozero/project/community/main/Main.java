@@ -44,13 +44,11 @@ public class Main
         HabilidadeTotalLogic habilidadeTotal = new HabilidadeTotalLogic();
         AtributosEquipamentosPet atributosEquipamentosPet = new AtributosEquipamentosPet();
         CalculoFinalHabilidadeBasica calculoFinal = new CalculoFinalHabilidadeBasica();
-        
-        
         FichaPersonagem fichaPersonagem = new FichaPersonagem();
-        
         
         Scanner sc = new Scanner(System.in);
         
+ 
         System.out.println("*******  Calculadora de Habilidade Básica Hero Zero v1.1.0  ***************");
         System.out.println("***************************************************************************");
         System.out.println("***                          INICIANDO O PROGRAMA                       ***");
@@ -121,5 +119,7 @@ public class Main
         System.out.println("********************************************************************************");
         System.out.println("***                      PROGRAMA ENCERRADO!                                 ***");
         System.out.println("********************************************************************************");
+    
+        sc.close();
     }
 }

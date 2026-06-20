@@ -6,8 +6,10 @@ import herozero.project.community.model.FichaPersonagem;
 import java.util.Scanner;
 
 /**
- * Classe com métodos que perguntam informações ao usuário e armazenam valores referentes
- * aos bônus dos equipamentos que o personagem está usando.
+ * Classe com método que pergunta informações ao usuário e armazena valores 
+ * referentes aos bônus dos equipamentos que o personagem está usando.
+ * 
+ * @author André Lauterjung
  * 
  */
 public class BonusEquipamentos
@@ -27,8 +29,10 @@ public class BonusEquipamentos
         String perguntaLendario = sc.nextLine();
         
         
-        // Início da primeira estrutura de condição
-        if(perguntaLendario.toLowerCase().equals("sim")) // caso o usúário digite que o personagem tenha conjunto lendário 
+        /* Início da primeira estrutura de condição
+        Roda caso o usuário digite que o personagem tenha conjunto 
+        lendário equipado. */
+        if(perguntaLendario.toLowerCase().equals("sim"))
         {
             this.bonusEquipamentosForca = 10;
             this.bonusEquipamentosVigor = 10;
@@ -49,8 +53,10 @@ public class BonusEquipamentos
         perguntaBonusEquipamentos.perguntaConjuntoEpico();
         String perguntaEpico = sc.nextLine();
         
-        // Início da segunda estrutura de condição
-        if(perguntaEpico.toLowerCase().equals("sim")) // caso ele tenha conjunto épico completo
+        /* Início da segunda estrutura de condição
+        Roda caso o usuário digite que o personagem tenha conjunto 
+        épico equipado. */
+        if(perguntaEpico.toLowerCase().equals("sim")) // Roda caso o usuário digite que o personagem tenha conjunto épico.
         {
             System.out.println("O conjunto épico acrescenta bônus de 5% ou 7% às habilidades básicas do personagem?");
             int verificacaoTipoConjEpico = sc.nextInt();
@@ -85,7 +91,7 @@ public class BonusEquipamentos
                     this.bonusEquipamentosIntuicao = 0;
         
                     System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
-            } // fechamento do switch case   
+            } // Fechamento do Switch case.
         
         } // Fim da segunda estrutura de condição.   
                 
@@ -93,8 +99,10 @@ public class BonusEquipamentos
         perguntaBonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
         String perguntaDispoArmaMissil = sc.nextLine();
         
-        // Início da terceira estrutura de condição
-        if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) // pergunta bônus de dispositivo + arma ou arma + missil
+        /*Início da terceira estrutura de condição
+        Roda caso o usuário digite que o personagem tenha conjunto 
+        de arma + míssil ou dispositivo + arma equipado.*/
+        if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) 
         {
             System.out.println("Em qual habilidade o bônus é acrescentado?");
             System.out.println("Opções: forca, vigor, cerebro ou intuicao");
@@ -125,17 +133,21 @@ public class BonusEquipamentos
                         
                 default:
                     System.out.println("Valor inválido!");
-            }
+            } // Fechamento do Switch case.
+            
         } // Fim da terceira estrutura de condição
          
-        
-        
+          
         // Início da Quarta estrutura de condição
+        /* Roda somente caso o usuário digite que o personagem NÃO tenha conjunto 
+        lendário e NÃO tenha conjunto épico equipado.*/
+        
         if(!perguntaLendario.equalsIgnoreCase("sim") && !perguntaEpico.equalsIgnoreCase("sim"))
         {
             perguntaBonusEquipamentos.perguntaConjuntosMistos();
             String perguntaMist = sc.nextLine();
-        
+            
+            // Roda caso o usuário digite que o personagem tenha conjunto misto.
             if(perguntaMist.toLowerCase().equals("sim")) // se ele tiver conjuntos mistos equipados 
             {   
         
@@ -166,6 +178,7 @@ public class BonusEquipamentos
                 sc.nextLine();
                 this.bonusEquipamentosIntuicao += pontosObjetosMistosIntuicao;
             }
+            // Roda caso o usuário digite que o personagem não tem conjunto misto.
             else
             {
             this.bonusEquipamentosForca += 0;
@@ -176,13 +189,13 @@ public class BonusEquipamentos
             System.out.println("Nenhum bonus de conjunto misto adicionado!");
             }
             
-        } // Fim da quarta estrutura de condição
+        } // Fim da quarta estrutura de condição.
         
          fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEquipamentosForca);
          fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEquipamentosVigor);
          fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEquipamentosCerebro);
          fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEquipamentosIntuicao);
     
-    } // Fechamento do método    
+    } // Fechamento do método verificarConjuntos.   
 
 } // Fechamento da classe.
