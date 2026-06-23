@@ -35,16 +35,20 @@ public class EnergeticoDeHabilidade
                }
                else
                {
-                  System.out.println("Você digitou um número inválido!");
-                  System.out.println("TENTE NOVAMENTE!");
+                   System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                   System.out.println("    Você digitou um número inválido!");
+                   System.out.println("         TENTE NOVAMENTE!");
+                   System.out.printf("X X X X X X X X X X X X X X X X X X X \n\n");
                }
                
             }
             catch(InputMismatchException e)
             {
                 userOpcaoEnergetico = -1;
+                System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n");
                 System.out.println("Você digitou uma String onde deve ir número, tente novamente!");
                 System.out.println("ERRO: "+e.getMessage());
+                System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n\n");
                 
                 sc.next();
             }
