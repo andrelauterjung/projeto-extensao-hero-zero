@@ -5,6 +5,7 @@ import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
 /**
  * Classe com método que armazena valor referente ao bônus de liga que o 
  * personagem recebe.
@@ -17,10 +18,39 @@ public class Liga
     
     public void verificarLiga(Scanner sc, FichaPersonagem fichaPersonagem)
     {
-        perguntaLiga.listaLigas();
-        int opcaoLiga = sc.nextInt();
-        sc.nextLine();
-
+        boolean isVerificandoLiga = true;
+        int opcaoLiga = -1;
+        
+        while(isVerificandoLiga)
+        {
+            try
+            {
+                perguntaLiga.listaLigas();
+                opcaoLiga = sc.nextInt();
+                sc.nextLine();
+                
+                if(opcaoLiga >= 0 && opcaoLiga <=13)
+                {      
+                    isVerificandoLiga = false;
+                }
+                else
+                {
+                    opcaoLiga = -1;
+                    System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                    System.out.println("     Você digitou um número inválido!");
+                    System.out.println("           Tente novamente!");
+                    System.out.printf("X X X X X X X X X X X X X X X X X X X\n\n");
+                }
+            
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
+                System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
+                sc.next();
+            }
+        }  
         
         switch(opcaoLiga)
         {
