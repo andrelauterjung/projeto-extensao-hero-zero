@@ -4,6 +4,7 @@ import herozero.project.community.view.BonusHabilidadePetView;
 import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  * Classe com métodos que retornam informações ao usuário e armazena valor 
@@ -16,16 +17,43 @@ public class HabilidadePet
     
     public void escolhaHabilidade (Scanner sc, FichaPersonagem fichaPersonagem)
     {
-        
         BonusHabilidadePetView perguntaHabilidadePet = new BonusHabilidadePetView();
         
-        perguntaHabilidadePet.perguntaHabilidadePet();
-        perguntaHabilidadePet.listaHabilidadePets();
+        boolean isCalculandoBonusPet = true;
+        int escolhaHabilidadePet = -1;
         
-        int escolhaHabilidadePet = sc.nextInt(); // Armazena o número que o usuário digitou
-        sc.nextLine();
+        while(isCalculandoBonusPet)
+        {
+            try
+            {
+                perguntaHabilidadePet.perguntaHabilidadePet();
+                perguntaHabilidadePet.listaHabilidadePets();
         
-        
+                escolhaHabilidadePet = sc.nextInt(); // Armazena o número que o usuário digitou
+                sc.nextLine();
+                
+                if(escolhaHabilidadePet < 0 || escolhaHabilidadePet > 27)
+                {
+                    System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                    System.out.println("    Você digitou um valor inválido!");
+                    System.out.println("        Tente novamente!");
+                    System.out.printf("X X X X X X X X X X X X X X X X X X X\n\n");   
+                }
+                else
+                {
+                    isCalculandoBonusPet = false;
+                    
+                } // Fim da estrutura condicional.
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
+                System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
+                sc.next();
+            }
+        } // Fim do loop while.
+              
         switch(escolhaHabilidadePet)
         {
             case 0:
