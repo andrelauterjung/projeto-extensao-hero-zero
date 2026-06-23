@@ -4,6 +4,7 @@ import herozero.project.community.view.BonusEsconderijoView;
 import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 /**
  * Classe com método que armazena o valor referente ao bônus de esconderijo de
  * herói que o personagem recebe.
@@ -18,33 +19,49 @@ public class EsconderijoHeroico
     {
         BonusEsconderijoView perguntaBonusEsconderijo = new BonusEsconderijoView();
         
-        perguntaBonusEsconderijo.listaNiveisLaboratorioCibernetico();
-        int valorEntradaBonusEsconderijo = sc.nextInt();
-        sc.nextLine();
+        int valorEntradaBonusEsconderijo;
+        boolean isCalculandoBonusEsconderijo = true;
         
-        if(valorEntradaBonusEsconderijo <= 0 || valorEntradaBonusEsconderijo > 25) // Início da Estrutura condicional
+        while(isCalculandoBonusEsconderijo)
         {
-            this.bonusEsconderijo = 0;
-            fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
-            
-            System.out.println("Valor inválido!");
-        }
+            try
+            {
+                perguntaBonusEsconderijo.listaNiveisLaboratorioCibernetico();
+                valorEntradaBonusEsconderijo = sc.nextInt();
+                sc.nextLine();
+                
+                if(valorEntradaBonusEsconderijo < 0 || valorEntradaBonusEsconderijo > 25)
+                {                
+                    System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                    System.out.println("    Você digitou um valor inválido!");
+                    System.out.println("        Tente novamente!");
+                    System.out.printf("X X X X X X X X X X X X X X X X X X X\n\n");
+                }
 
-        else // Caso o usuário digite um valor maior que 0 ou menor igual a 25
-        {
-            this.bonusEsconderijo = valorEntradaBonusEsconderijo;
-            fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEsconderijo);
-            fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEsconderijo);
-            fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEsconderijo);
-            fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEsconderijo);
+                else // Caso o usuário digite um valor maior ou igual a 0 ou menor igual a 25.
+                {
+                    this.bonusEsconderijo = valorEntradaBonusEsconderijo;
+                    fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEsconderijo);
+                    fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEsconderijo);
+                    fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEsconderijo);
+                    fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEsconderijo);
             
-        } // Fim da Estrutura condicional
+                    isCalculandoBonusEsconderijo = false;
+                    
+                } // Fim da estrutura condicional.
+       
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
+                System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
+                sc.next();
+            }   
+        } // Fim do loop while.
         
         System.out.printf("O personagem recebe %d%% de bônus do esconderijo heroico\n", this.bonusEsconderijo);
    
-    } // Fechamento do método verificarBonusEsconderijo
+    } // Fechamento do método verificarBonusEsconderijo.
 
 } // Fechamento da classe.
