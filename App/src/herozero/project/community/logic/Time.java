@@ -3,6 +3,7 @@ package herozero.project.community.logic;
 import herozero.project.community.view.BonusTeamView;
 import herozero.project.community.model.FichaPersonagem;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  * Classe com método que armazena o valor referente ao 
@@ -18,57 +19,77 @@ public class Time
     {
         BonusTeamView perguntaBonusTime = new BonusTeamView();
         
-        perguntaBonusTime.perguntaPersonagemTime();
-        String analiseJogadorEquipe = sc.nextLine(); // Armazena o 'sim' ou 'nao'
-        String editAnaliseJogadorEquipe = analiseJogadorEquipe.toLowerCase(); // transforma toda a String em letras minúsculas e atribui a uma nova variável
+        boolean isVerificandoPergunta = true; 
+        boolean isVerificandoValor = true;
+   
+        while(isVerificandoPergunta)
+        {
+            perguntaBonusTime.perguntaPersonagemTime();
+            String analiseJogadorEquipe = sc.nextLine(); // Armazena o 'sim' ou 'nao'
+            String editAnaliseJogadorEquipe = analiseJogadorEquipe.toLowerCase(); // transforma toda a String em letras minúsculas e atribui a uma nova variável
 
         
-        if(editAnaliseJogadorEquipe.equals("sim")) // Início da primeira estrutura condicional.
-        {  
-            
-            
-            perguntaBonusTime.mensagemTime(); // pergunta o total de bônus que a equipe dá às habilidades básicas do personagem
-            int valorBonusTime = sc.nextInt();
-            sc.nextLine();
-            
-            
-            if(valorBonusTime <= 0 ||valorBonusTime >50) // Início da segunda estrutura condicional.
-            { 
+            if(editAnaliseJogadorEquipe.equals("sim")) // Início da primeira estrutura condicional.
+            {  
+                isVerificandoPergunta = false;
                 
+                while(isVerificandoValor)
+                {
+                    try
+                    {
+                        perguntaBonusTime.mensagemTime(); // pergunta o total de bônus que a equipe dá às habilidades básicas do personagem
+                        int valorBonusTime = sc.nextInt();
+                        sc.nextLine();
+                    
+                        if(valorBonusTime < 0 ||valorBonusTime >50) // Início da segunda estrutura condicional.
+                        { 
+                            System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                            System.out.println("    Você digitou um valor inválido!");
+                            System.out.println("        Tente novamente!");
+                            System.out.printf("X X X X X X X X X X X X X X X X X X X\n\n");
+                        }
+            
+                        else // Caso ele digite um valor maior ou igual a zero ou menor igual a 50
+                        {
+                            this.bonusTime = valorBonusTime;
+                
+                            fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusTime);
+                            fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusTime);
+                            fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusTime);
+                            fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusTime);
+                
+                
+                            System.out.printf("O personagem recebe um bônus de %d%% do time nas habilidades básicas!\n", this.bonusTime);
+                            isVerificandoValor = false;
+                            
+                        } // Fim da segunda estrutura condicional.
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                        System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
+                        System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
+                        sc.next();
+                    }
+                    
+                } // Fim do primeiro loop while
+                
+            } // Fechamento da primeira estrutura condicional;
+        
+            if(editAnaliseJogadorEquipe.equals("nao") || editAnaliseJogadorEquipe.equals("não")) // caso o usuário digite 'não'
+            {
+                perguntaBonusTime.semBonusTime();
+           
                 fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
                 fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
                 fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
                 fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
                 
-                System.out.println("Valor inválido!");
-                perguntaBonusTime.semBonusTime();
-            }
-            
-            else // Caso ele digite um valor maior que zero ou menor igual a 50
-            {
-                this.bonusTime = valorBonusTime;
-                
-                fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusTime);
-                fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusTime);
-                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusTime);
-                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusTime);
-                
-                
-                System.out.printf("O personagem recebe um bônus de %d%% do time nas habilidades básicas!\n", this.bonusTime);
-            
-            } // Fim da segunda estrutura condicional.
-        }
-        
-        else // caso o usuário digite 'não'
-        {
-           perguntaBonusTime.semBonusTime();
-           
-           fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
-           fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
-           fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
-           fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
+                isVerificandoPergunta = false;
        
-        } // Fim da primeira estrutura condicional. 
+            } // Fechamento da segunda estrutura condicional. 
+        
+        } //Fim do segundo loop while
         
     } // Fechamento do método verificarBonusTime
     
