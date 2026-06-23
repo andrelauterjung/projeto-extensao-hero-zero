@@ -3,6 +3,7 @@ package herozero.project.community.logic;
 import herozero.project.community.view.BonusEnergeticView;
 import herozero.project.community.model.FichaPersonagem;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -17,9 +18,38 @@ public class EnergeticoDeHabilidade
     {
         BonusEnergeticView perguntaEnergetico = new BonusEnergeticView();
         
-        perguntaEnergetico.listaEnergeticos();
-        int userOpcaoEnergetico = sc.nextInt();
-        sc.nextLine();
+        boolean isEnergeticQuestRunning = true;
+        int userOpcaoEnergetico = -1;
+        
+        while(isEnergeticQuestRunning)
+        {
+            try
+            {
+               perguntaEnergetico.listaEnergeticos();
+               userOpcaoEnergetico = sc.nextInt();
+               sc.nextLine();
+               
+               if(userOpcaoEnergetico >= 0 && userOpcaoEnergetico < 4)
+               {
+                   isEnergeticQuestRunning = false;   
+               }
+               else
+               {
+                  System.out.println("Você digitou um número inválido!");
+                  System.out.println("TENTE NOVAMENTE!");
+               }
+               
+            }
+            catch(InputMismatchException e)
+            {
+                userOpcaoEnergetico = -1;
+                System.out.println("Você digitou uma String onde deve ir número, tente novamente!");
+                System.out.println("ERRO: "+e.getMessage());
+                
+                sc.next();
+            }
+        }
+        
         
         switch(userOpcaoEnergetico)
         {
