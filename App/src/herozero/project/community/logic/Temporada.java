@@ -4,6 +4,7 @@ import herozero.project.community.view.BonusTemporadaView;
 import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  * Classe com método que armazena o valor referente ao 
@@ -24,88 +25,179 @@ public class Temporada
         
         BonusTemporadaView perguntaBonusTemporada = new BonusTemporadaView();
         
+        boolean isBonusTemporada = true;
+        boolean isPerguntandoTemporada = true;
+        boolean isValorBonusTemporada = true;  
+        boolean isNomeHabilidades = true;
+        String novoNomeHabilidade = "";
+        String pergunta = "";       
+        int valorBonusTemporada = -1;
         
-        perguntaBonusTemporada.perguntaTemporadaHabilidade(); // pergunta se a temporada acrescenta bônus nas habilidades
-        String pergunta = sc.nextLine();
-        
-        
-        if(pergunta.toLowerCase().equals("sim")) // Início da estrutura de condição.
+        /* Loop para primeira parte referente ao bônus de temporada
+        onde o usuário digitará se o personagem recebe ou não um bônus de temporada */
+        while(isPerguntandoTemporada) 
         {
             
-            perguntaBonusTemporada.bonusNomeHabilidadeBasica(); // pergunta em que habilidade vai o bônus de temporada
-            String novoNomeHabilidade = sc.nextLine(); 
-            
-            perguntaBonusTemporada.bonusTemporadaHabilidade(); // pede para o usuário digitar o valor do bônus de temporada
-            int valorBonusTemporada = sc.nextInt(); 
-            sc.nextLine();
+            perguntaBonusTemporada.perguntaTemporadaHabilidade(); // pergunta se a temporada acrescenta bônus nas habilidades
+            pergunta = sc.nextLine();
+            pergunta = pergunta.toLowerCase();
             
             
-            switch (novoNomeHabilidade)
+            /* Caso seja "sim", "não" ou "nao" o loop para 
+            Se não for nenhuma dessas três opções, o loop continua até o usuário
+            digitar corretamente a palavra. */
+            if(pergunta.equals("sim") || pergunta.equals("não") || pergunta.equals("nao"))
             {
-                case "forca":
-                    this.forcaBasica = valorBonusTemporada;
-                    fichaPersonagem.getBonusTotal().setBonusTotalForca(this.forcaBasica);
-                    
-                    System.out.printf("O personagem recebe um bônus de %d%% na força básica!\n", valorBonusTemporada);
-                    break;
+                isPerguntandoTemporada = false;
+            }
+            else
+            {
+                System.out.printf("\nX X X X X X X X X X X X\n");
+                System.out.println("Você digitou errado!");
+                System.out.println("Tente novamente!");
+                System.out.printf(" X X X X X X X X X X X X X\n\n");
                 
-                case "vigor":
-                    this.vigorBasico = valorBonusTemporada;
-                    fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.vigorBasico);
-                    
-                    System.out.printf("O personagem recebe um bônus de %d%% no vigor básico!\n", valorBonusTemporada);
-                    break;
+            } // Fechamento da estrutura de condição.
+            
+        } // Fechamento do loop while referente a verificação da temporada. 
+        
+        
+        while(isNomeHabilidades)
+        {
+            if(pergunta.equals("sim"))
+            {
+                perguntaBonusTemporada.bonusNomeHabilidadeBasica(); // pergunta em que habilidade vai o bônus de temporada
+                novoNomeHabilidade = sc.nextLine();
+                novoNomeHabilidade = novoNomeHabilidade.toLowerCase();
                 
-                case "cerebro":
-                    this.cerebroBasico= valorBonusTemporada;
-                    fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.cerebroBasico);
+            
+                if(novoNomeHabilidade.equals("forca") || novoNomeHabilidade.equals("vigor") || novoNomeHabilidade.equals("cerebro") || novoNomeHabilidade.equals("intuicao") || novoNomeHabilidade.equals("todas"))
+                {
+                    isNomeHabilidades = false;
+                }
+                else
+                {
+                    System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                    System.out.println(" Você digitou o nome da habilidade errado ou 'todas' errado!");
+                    System.out.println("                    Tente novamente!");
+                    System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n\n");
                     
-                    System.out.printf("O personagem recebe um bônus de %d%% no cérebro básico!\n", valorBonusTemporada);
-                    break;
+                } // Fechamento da estrutura de condição. 
                 
-                case "intuicao":
-                    this.intuicaoBasica = valorBonusTemporada;
-                    fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.intuicaoBasica);
-                    
-                    System.out.printf("O personagem recebe um bônus de %d%% na intuição básica!\n", valorBonusTemporada);
-                    break;
+            }
+            
+            else
+            {
+                System .out.println("A temporada não acrescenta bônus às habilidades básicas do personagem!");
+            
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
                 
-                case "todas":
-                    this.forcaBasica = valorBonusTemporada;
-                    this.vigorBasico = valorBonusTemporada;
-                    this.cerebroBasico = valorBonusTemporada;
-                    this.intuicaoBasica = valorBonusTemporada;
+                isNomeHabilidades = false;
+                
+            } // Fechamento da estrutura de condição.
+            
+        } // Fechamento do loop while referente ao nome da habilidade.
+            
+                     
+        // Aqui o programa vai perguntar o total de bônus que o personagem recebe da temporada
+        
+        if(pergunta.equals("sim"))
+        {
+            while(isValorBonusTemporada)
+            {
+                try
+                {
+                    perguntaBonusTemporada.bonusTemporadaHabilidade(); // pede para o usuário digitar o valor do bônus de temporada
+                    valorBonusTemporada = sc.nextInt(); 
+                    sc.nextLine();
+                      
+                    if(valorBonusTemporada < 0 || valorBonusTemporada > 275)
+                    {            
+                        System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
+                        System.out.println("    Você digitou um valor inválido!");
+                        System.out.println("        Tente novamente!");
+                        System.out.printf("X X X X X X X X X X X X X X X X X X X\n\n");
+                    }
+                    else
+                    {
+                        isValorBonusTemporada = false;
+                    }         
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X\n");
+                    System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
+                    System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
+                        
+                    sc.next();
+            
+                }// Fechamento do Try-catch
                     
-                    fichaPersonagem.getBonusTotal().setBonusTotalForca(this.forcaBasica);
-                    fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.vigorBasico);
-                    fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.cerebroBasico);
-                    fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.intuicaoBasica);
+            } // Fechamento do terceiro loop while.  
+        
+        } // Fechamento da estrutura de condição.
+            
+        
+        
+        
+        if(pergunta.equals("sim"))
+        {
+        switch (novoNomeHabilidade)
+        {
+            case "forca":
+                this.forcaBasica = valorBonusTemporada;
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(this.forcaBasica);
                     
-                    
-                    System.out.printf("O personagem recebe um bônus de %d%% em todas as habilidades básicas!\n", valorBonusTemporada);
+                System.out.printf("O personagem recebe um bônus de %d%% na força básica!\n", valorBonusTemporada);
+                isNomeHabilidades = false;
                 break;
                 
-                default:
-                    System.out.println("Valor inválido!");
+            case "vigor":
+                this.vigorBasico = valorBonusTemporada;
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.vigorBasico);
                     
-                    fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
-                    fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
-                    fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
-                    fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
+                System.out.printf("O personagem recebe um bônus de %d%% no vigor básico!\n", valorBonusTemporada);
+                isNomeHabilidades = false;
+                break;
+                
+            case "cerebro":
+                this.cerebroBasico= valorBonusTemporada;
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.cerebroBasico);
+                    
+                System.out.printf("O personagem recebe um bônus de %d%% no cérebro básico!\n", valorBonusTemporada);
+                isNomeHabilidades = false;
+                break;
+                
+            case "intuicao":
+                this.intuicaoBasica = valorBonusTemporada;
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.intuicaoBasica);
+                    
+                System.out.printf("O personagem recebe um bônus de %d%% na intuição básica!\n", valorBonusTemporada);
+                isNomeHabilidades = false;
+                break;
+                
+            case "todas":
+                this.forcaBasica = valorBonusTemporada;
+                this.vigorBasico = valorBonusTemporada;
+                this.cerebroBasico = valorBonusTemporada;
+                this.intuicaoBasica = valorBonusTemporada;
+                    
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(this.forcaBasica);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.vigorBasico);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.cerebroBasico);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.intuicaoBasica);
+                    
+                    
+                System.out.printf("O personagem recebe um bônus de %d%% em todas as habilidades básicas!\n", valorBonusTemporada);
+                isNomeHabilidades = false;
+                break;
         
             } // Fechamento do switch case.
         
-        } 
-        else
-        {
-            System.out.println("A temporada não acrescenta bônus às habilidades básicas do personagem!");
-            
-            fichaPersonagem.getBonusTotal().setBonusTotalForca(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalVigor(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalCerebro(0);
-            fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(0);
-        
-        } // fechamanto do else
+        } // Fechamento da estrutura de condição.
         
     } // Fechamento do método verificacaoBonusTemporada.
     
