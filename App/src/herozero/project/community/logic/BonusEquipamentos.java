@@ -72,6 +72,7 @@ public class BonusEquipamentos
                 System.out.println("Todas as habilidades básicas recebem um bônus de 10% de conjunto"); 
                 
                 isVerificandoConjLendario = false; 
+                return;
                 
             }
             
@@ -132,7 +133,7 @@ public class BonusEquipamentos
                             System.out.println("ERRO: Você digitou uma String onde deve ir número!");
                             System.out.println("Tente novamente!");
                             
-                            sc.next();
+                            sc.nextLine();
                         } // Fechamento do Try-catch. 
                             
                     } // Fechamento do loop while isVerificandoBonusEpic.
@@ -272,7 +273,7 @@ public class BonusEquipamentos
         
         Roda somente caso o usuário digite que o personagem NÃO tenha conjunto 
         lendário e NÃO tenha conjunto épico equipado.*/
-        if(!perguntaLendario.equalsIgnoreCase("sim") && !perguntaEpico.equalsIgnoreCase("sim"))
+        if(!perguntaLendario.equals("sim") && !perguntaEpico.equals("sim"))
         {
             
             // Adicionar loop while para continuar em execução caso o usuário digite errado 'sim ou nao/não'
@@ -284,7 +285,7 @@ public class BonusEquipamentos
                 perguntaMist = sc.nextLine();
                 perguntaMist = perguntaMist.toLowerCase();
                 
-                if(!perguntaDispoArmaMissil.equals("sim") && !perguntaDispoArmaMissil.equals("não") && !perguntaDispoArmaMissil.equals("nao"))
+                if(!perguntaMist.equals("sim") && !perguntaMist.equals("não") && !perguntaMist.equals("nao"))
                 {
                     System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
                 }
@@ -327,7 +328,7 @@ public class BonusEquipamentos
                         System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
                         System.out.println("TENTE NOVAMENTE!");
                     
-                        sc.next();
+                        sc.nextLine();
                     }
                 }
                 this.bonusEquipamentosForca += pontosObjetosMistosForca;
@@ -356,12 +357,13 @@ public class BonusEquipamentos
                         System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
                         System.out.println("TENTE NOVAMENTE!");
                     
-                        sc.next();
+                        sc.nextLine();
                     }
                 }
                 this.bonusEquipamentosVigor += pontosObjetosMistosVigor;
                     
-                              
+                
+                
                 boolean isCerebroConjMistoRun = true;
                 while(isCerebroConjMistoRun)
                 {                    
@@ -385,7 +387,7 @@ public class BonusEquipamentos
                         System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
                         System.out.println("TENTE NOVAMENTE!");
                     
-                        sc.next();
+                        sc.nextLine();
                     }
                 }
                 this.bonusEquipamentosCerebro += pontosObjetosMistosCerebro; 
@@ -415,7 +417,7 @@ public class BonusEquipamentos
                         System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
                         System.out.println("TENTE NOVAMENTE!");
                     
-                        sc.next();
+                        sc.nextLine();
                     }
                 }
                 this.bonusEquipamentosIntuicao += pontosObjetosMistosIntuicao;
