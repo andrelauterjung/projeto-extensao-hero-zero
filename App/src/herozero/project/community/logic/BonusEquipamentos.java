@@ -303,67 +303,120 @@ public class BonusEquipamentos
                 System.out.println("ATENÇÃO: Não some os bônus de arma, dispositivo e míssil, pois já foram calculados!");
                    
                 
-                //Adicionar Try-catch 
-                try
+                //Adicionar loops while
+                boolean isForcaConjMistoRun = true;
+                while(isForcaConjMistoRun)
                 {
-                    System.out.println("Força básica: ");
-                    pontosObjetosMistosForca = sc.nextInt();
-                    sc.nextLine();              
-                }
-                catch(InputMismatchException e)
-                {
-                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                    System.out.println("TENTE NOVAMENTE!");
+                    try
+                    {
+                        System.out.println("Força básica: ");
+                        pontosObjetosMistosForca = sc.nextInt();
+                        sc.nextLine(); 
                     
-                    sc.next();
+                        if(pontosObjetosMistosForca < 0 || pontosObjetosMistosForca > 28)
+                        {
+                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                        }
+                        else
+                        {
+                            isForcaConjMistoRun = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                        System.out.println("TENTE NOVAMENTE!");
+                    
+                        sc.next();
+                    }
                 }
                 this.bonusEquipamentosForca += pontosObjetosMistosForca;
               
                     
-                try
+                boolean isVigorConjMistoRun = true;
+                while(isVigorConjMistoRun)
                 {
-                    System.out.println("Vigor básico: ");
-                    pontosObjetosMistosVigor = sc.nextInt();
-                    sc.nextLine();
-                }
-                catch(InputMismatchException e)
-                {
-                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                    System.out.println("TENTE NOVAMENTE!");
+                    try
+                    {
+                        System.out.println("Vigor básico: ");
+                        pontosObjetosMistosVigor = sc.nextInt();
+                        sc.nextLine();
                     
-                    sc.next();
+                        if(pontosObjetosMistosVigor < 0 || pontosObjetosMistosVigor > 28)
+                        {
+                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                        }
+                        else
+                        {
+                            isVigorConjMistoRun = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                        System.out.println("TENTE NOVAMENTE!");
+                    
+                        sc.next();
+                    }
                 }
                 this.bonusEquipamentosVigor += pontosObjetosMistosVigor;
                     
+                              
+                boolean isCerebroConjMistoRun = true;
+                while(isCerebroConjMistoRun)
+                {                    
+                    try
+                    {
+                        System.out.println("Cérebro básico: ");
+                        pontosObjetosMistosCerebro = sc.nextInt();
+                        sc.nextLine();
+                
+                        if(pontosObjetosMistosCerebro < 0 || pontosObjetosMistosCerebro > 28)
+                        {
+                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                        }
+                        else
+                        {
+                            isCerebroConjMistoRun = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                        System.out.println("TENTE NOVAMENTE!");
                     
-                try
-                {
-                System.out.println("Cérebro básico: ");
-                pontosObjetosMistosCerebro = sc.nextInt();
-                sc.nextLine();
-                }
-                catch(InputMismatchException e)
-                {
-                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                    System.out.println("TENTE NOVAMENTE!");
-                    
-                    sc.next();
+                        sc.next();
+                    }
                 }
                 this.bonusEquipamentosCerebro += pontosObjetosMistosCerebro; 
               
                 
-                try
+                
+                boolean isIntuicaoConjMistoRun = true;
+                while(isIntuicaoConjMistoRun)
                 {
-                System.out.println("Intuicao básica: ");
-                pontosObjetosMistosIntuicao = sc.nextInt();
-                sc.nextLine();
-                }
-                catch(InputMismatchException e)
-                {
-                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                    System.out.println("TENTE NOVAMENTE!");
+                    try
+                    {
+                        System.out.println("Intuicao básica: ");
+                        pontosObjetosMistosIntuicao = sc.nextInt();
+                        sc.nextLine();
                     
-                    sc.next();
+                        if(pontosObjetosMistosIntuicao < 0 || pontosObjetosMistosIntuicao > 28)
+                        {
+                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                        }
+                        else
+                        {
+                            isIntuicaoConjMistoRun = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                        System.out.println("TENTE NOVAMENTE!");
+                    
+                        sc.next();
+                    }
                 }
                 this.bonusEquipamentosIntuicao += pontosObjetosMistosIntuicao;
             }
