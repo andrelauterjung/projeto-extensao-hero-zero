@@ -4,7 +4,7 @@ import herozero.project.community.view.BonusEquipamentosView;
 import herozero.project.community.model.FichaPersonagem;
 
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 /**
  * Classe com método que pergunta informações ao usuário e armazena valores 
  * referentes aos bônus dos equipamentos que o personagem está usando.
@@ -25,176 +25,365 @@ public class BonusEquipamentos
         
         BonusEquipamentosView perguntaBonusEquipamentos = new BonusEquipamentosView();
         
-        perguntaBonusEquipamentos.perguntaConjuntoLendario();
-        String perguntaLendario = sc.nextLine();
+        boolean isVerificandoConjLendario = true;
+        boolean isVerificandoValBonusEpic = true;
+        boolean isVerificandoRespConjEpic = true;
+        boolean isPerguntandoConjDispArmMis = true;
+        boolean isNomeHabilidadeConjDispArmMis = true;
+        boolean isPerguntandoConjMis = true;
+        
+        int verificacaoTipoConjEpico = -1;
+        int pontosObjetosMistosForca = -1;
+        int pontosObjetosMistosVigor = -1;
+        int pontosObjetosMistosCerebro = -1;
+        int pontosObjetosMistosIntuicao = -1;
+        String perguntaLendario = "";
+        String perguntaEpico = "";
+        String perguntaDispoArmaMissil = "";
+        String verifHabilidadeConjDispArmaMissil = "";
+        String perguntaMist = "";
         
         
-        /* Início da primeira estrutura de condição
-        Roda caso o usuário digite que o personagem tenha conjunto 
-        lendário equipado. */
-        if(perguntaLendario.toLowerCase().equals("sim"))
+        
+        /* Este loop continuará em funcionamento enquanto o usuário não digitar
+        "sim", "não" ou "nao" corretamente referente a pergunta sobre conjuntos
+        lendários. */
+        while(isVerificandoConjLendario)
         {
-            this.bonusEquipamentosForca = 10;
-            this.bonusEquipamentosVigor = 10;
-            this.bonusEquipamentosCerebro = 10;
-            this.bonusEquipamentosIntuicao = 10;
-            
-            fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEquipamentosForca);
-            fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEquipamentosVigor);
-            fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEquipamentosCerebro);
-            fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEquipamentosIntuicao);
-            
-            System.out.println("Todas as habilidades básicas recebem um bônus de 10% de conjunto");
-            return;
-        } // Fim da primeira estrutura de condição
+            perguntaBonusEquipamentos.perguntaConjuntoLendario();
+            perguntaLendario = sc.nextLine();
+            perguntaLendario = perguntaLendario.toLowerCase();
         
-        
-        
-        perguntaBonusEquipamentos.perguntaConjuntoEpico();
-        String perguntaEpico = sc.nextLine();
-        
-        /* Início da segunda estrutura de condição
-        Roda caso o usuário digite que o personagem tenha conjunto 
-        épico equipado. */
-        if(perguntaEpico.toLowerCase().equals("sim")) // Roda caso o usuário digite que o personagem tenha conjunto épico.
-        {
-            System.out.println("O conjunto épico acrescenta bônus de 5% ou 7% às habilidades básicas do personagem?");
-            int verificacaoTipoConjEpico = sc.nextInt();
-            sc.nextLine();
-                
-            switch(verificacaoTipoConjEpico)
+            /* Início da primeira estrutura de condição
+            Roda caso o usuário digite que o personagem tenha conjunto 
+            lendário equipado. */
+            if(perguntaLendario.equals("sim"))
             {
-                case 5:
-                    this.bonusEquipamentosForca = 5;
-                    this.bonusEquipamentosVigor = 5;
-                    this.bonusEquipamentosCerebro = 5;
-                    this.bonusEquipamentosIntuicao = 5;
-        
-                    System.out.printf("Todas as habilidades básicas recebem um bônus de 5%% de conjunto\n"); 
-                break;
+                this.bonusEquipamentosForca = 10;
+                this.bonusEquipamentosVigor = 10;
+                this.bonusEquipamentosCerebro = 10;
+                this.bonusEquipamentosIntuicao = 10;
+            
+                fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEquipamentosForca);
+                fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEquipamentosVigor);
+                fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEquipamentosCerebro);
+                fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEquipamentosIntuicao);
+            
+                System.out.println("Todas as habilidades básicas recebem um bônus de 10% de conjunto"); 
+                
+                isVerificandoConjLendario = false; 
+                
+            }
+            
+            else if(perguntaLendario.equals("não") || perguntaLendario.equals("nao"))
+            {
+                
+                /* Este loop while continuará ativo enquanto o usuário não digitar 
+                "sim", "não" ou "nao" corretamente referente a pergunta sobre
+                conjuntos épicos. */  
+                while(isVerificandoRespConjEpic)
+                {   
+                 
+                    perguntaBonusEquipamentos.perguntaConjuntoEpico();
+                    perguntaEpico = sc.nextLine();
+                    perguntaEpico = perguntaEpico.toLowerCase();
                     
-                case 7:
-                    this.bonusEquipamentosForca = 7;
-                    this.bonusEquipamentosVigor = 7;
-                    this.bonusEquipamentosCerebro = 7;
-                    this.bonusEquipamentosIntuicao = 7;
+                    if(!perguntaEpico.equals("sim") && !perguntaEpico.equals("não") && !perguntaEpico.equals("nao"))
+                    {
+                        System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                    }
+                    else
+                    {
+                        isVerificandoRespConjEpic = false;
+                    }
+                    
+                    isVerificandoConjLendario = false;
+                }
+                
+               
+                
+                /* Início da segunda estrutura de condição
+                Roda caso o usuário digite que o personagem tenha conjunto 
+                épico equipado. */
+                if(perguntaEpico.equals("sim")) // Roda caso o usuário digite que o personagem tenha conjunto épico.
+                {
+                    
+                    while(isVerificandoValBonusEpic)
+                    {
+                        try
+                        {
+                            System.out.println("O conjunto épico acrescenta bônus de 5% ou 7% às habilidades básicas do personagem?");
+                            verificacaoTipoConjEpico = sc.nextInt();
+                            sc.nextLine();
+                            
+                            if(verificacaoTipoConjEpico != 5 && verificacaoTipoConjEpico != 7)
+                            {
+                                System.out.println("ERRO: Você precisa digitar 5 ou 7!");
+                                System.out.println("Tente novamente!");
+                            }
+                            else
+                            {
+                                isVerificandoValBonusEpic = false;                              
+                            } // Fechamento da Estrutura de condição.
+                            
+                        }
+                        catch(InputMismatchException e)
+                        {                          
+                            System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                            System.out.println("Tente novamente!");
+                            
+                            sc.next();
+                        } // Fechamento do Try-catch. 
+                            
+                    } // Fechamento do loop while isVerificandoBonusEpic.
+                        
+                        
+                        
+                    switch(verificacaoTipoConjEpico)
+                    {
+                        case 5:
+                            this.bonusEquipamentosForca = 5;
+                            this.bonusEquipamentosVigor = 5;
+                            this.bonusEquipamentosCerebro = 5;
+                            this.bonusEquipamentosIntuicao = 5;
         
-                    System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n");
-                    break;
-                        
-                default:
-                    System.out.println("Valor inválido!");
-                        
+                            System.out.printf("Todas as habilidades básicas recebem um bônus de 5%% de conjunto\n"); 
+                        break;
+                    
+                        case 7:
+                            this.bonusEquipamentosForca = 7;
+                            this.bonusEquipamentosVigor = 7;
+                            this.bonusEquipamentosCerebro = 7;
+                            this.bonusEquipamentosIntuicao = 7;
+        
+                            System.out.printf("Todas as habilidades básicas recebem um bônus de 7%% de conjunto\n");
+                        break;
+                            
+                    } // Fechamento do Switch case.
+                    
+                    isVerificandoConjLendario = false;
+        
+                }
+                else
+                {
                     this.bonusEquipamentosForca = 0;
                     this.bonusEquipamentosVigor = 0;
                     this.bonusEquipamentosCerebro = 0;
                     this.bonusEquipamentosIntuicao = 0;
         
                     System.out.println("O personagem não recebe bônus de conjunto de equipamentos!");
-            } // Fechamento do Switch case.
-        
-        } // Fim da segunda estrutura de condição.   
+                    
+                } // Fechamento da segunda estrutura de condição.
+     
+            }
+            else
                 
+            {
+                System.out.println("Você digitou 'sim' ou 'nao' errado!");
+                System.out.println("TENTE NOVAMENTE!");
+                
+            } // Fechamento da primeira estrutura de condição.
         
-        perguntaBonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
-        String perguntaDispoArmaMissil = sc.nextLine();
+        } // Fechamento do loop while.
         
+        
+           
+        /*Início da verificação de conjunto de arma+dispositivo ou arma+míssil. 
+        
+        Caso o jogador possua conjunto lendário, este bloco não roda.*/
+
+        if(!perguntaLendario.equals("sim"))
+        {
+            while(isPerguntandoConjDispArmMis)
+            {
+                perguntaBonusEquipamentos.perguntaConjuntoDispositivoArmaMissil();
+                perguntaDispoArmaMissil = sc.nextLine();
+                perguntaDispoArmaMissil = perguntaDispoArmaMissil.toLowerCase();
+                
+                if(perguntaDispoArmaMissil.equals("sim") || perguntaDispoArmaMissil.equals("não") || perguntaDispoArmaMissil.equals("nao"))
+                {
+                    isPerguntandoConjDispArmMis = false;
+                }
+                else
+                {
+                    System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                        
+                }
+                
+            } // Fechamento loop while
+            
+        } // Fechamento da estrutura de condição.
+
+
         /*Início da terceira estrutura de condição
         Roda caso o usuário digite que o personagem tenha conjunto 
         de arma + míssil ou dispositivo + arma equipado.*/
-        if(perguntaDispoArmaMissil.toLowerCase().equals("sim")) 
+        if(perguntaDispoArmaMissil.equals("sim")) 
         {
-            System.out.println("Em qual habilidade o bônus é acrescentado?");
-            System.out.println("Opções: forca, vigor, cerebro ou intuicao");
-            System.out.println("Observação: digite sem caracteres especiais ou acentos.\n\n");
-            String verifHabilidadeConjDispArmaMissil = sc.nextLine();
-    
-            switch(verifHabilidadeConjDispArmaMissil.toLowerCase())
+                    
+            // Adicionar loop while para que continue em execução enquanto o usuário não digite a habilidade corretamente
+            while(isNomeHabilidadeConjDispArmMis)
+            {
+                System.out.println("Em qual habilidade o bônus é acrescentado?");
+                System.out.println("Opções: forca, vigor, cerebro ou intuicao");
+                    
+                verifHabilidadeConjDispArmaMissil = sc.nextLine();
+                verifHabilidadeConjDispArmaMissil = verifHabilidadeConjDispArmaMissil.toLowerCase();
+                   
+                if(!verifHabilidadeConjDispArmaMissil.equals("forca") && !verifHabilidadeConjDispArmaMissil.equals("vigor")
+                && !verifHabilidadeConjDispArmaMissil.equals("cerebro") && !verifHabilidadeConjDispArmaMissil.equals("intuicao"))
+                {
+                    System.out.println("Você digitou 'forca', 'vigor', 'cerebro' ou 'intuicao' errado! Tente novamente!");
+                }
+                else
+                {
+                    isNomeHabilidadeConjDispArmMis= false;
+                }
+            }
+                            
+            switch(verifHabilidadeConjDispArmaMissil)
             {
                 case "forca":
                     this.bonusEquipamentosForca += 7;
-                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosForca);
+                    System.out.printf("Total de bônus na %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosForca);
                     break;
                     
                 case "vigor":
                     this.bonusEquipamentosVigor += 7;
-                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosVigor);
+                    System.out.printf("Total de bônus no %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosVigor);
                     break;
                 
                 case "cerebro":
                     this.bonusEquipamentosCerebro += 7;
-                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosCerebro);
+                    System.out.printf("Total de bônus no %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosCerebro);
                     break;
                 
                 case "intuicao":
                     this.bonusEquipamentosIntuicao += 7;
-                    System.out.printf("Total de bônus no(a) %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosIntuicao);
+                    System.out.printf("Total de bônus na %s: %d%%\n", verifHabilidadeConjDispArmaMissil, this.bonusEquipamentosIntuicao);
                     break;
-                        
-                default:
-                    System.out.println("Valor inválido!");
+
             } // Fechamento do Switch case.
             
         } // Fim da terceira estrutura de condição
-         
-          
-        // Início da Quarta estrutura de condição
-        /* Roda somente caso o usuário digite que o personagem NÃO tenha conjunto 
-        lendário e NÃO tenha conjunto épico equipado.*/
+                
+
+        /* Início da Quarta estrutura de condição
         
+        Roda somente caso o usuário digite que o personagem NÃO tenha conjunto 
+        lendário e NÃO tenha conjunto épico equipado.*/
         if(!perguntaLendario.equalsIgnoreCase("sim") && !perguntaEpico.equalsIgnoreCase("sim"))
         {
-            perguntaBonusEquipamentos.perguntaConjuntosMistos();
-            String perguntaMist = sc.nextLine();
             
+            // Adicionar loop while para continuar em execução caso o usuário digite errado 'sim ou nao/não'
+            
+            while(isPerguntandoConjMis)
+            {
+   
+                perguntaBonusEquipamentos.perguntaConjuntosMistos();
+                perguntaMist = sc.nextLine();
+                perguntaMist = perguntaMist.toLowerCase();
+                
+                if(!perguntaDispoArmaMissil.equals("sim") && !perguntaDispoArmaMissil.equals("não") && !perguntaDispoArmaMissil.equals("nao"))
+                {
+                    System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                }
+                else
+                {
+                    isPerguntandoConjMis = false;
+                }
+            }
+              
             // Roda caso o usuário digite que o personagem tenha conjunto misto.
-            if(perguntaMist.toLowerCase().equals("sim")) // se ele tiver conjuntos mistos equipados 
+            if(perguntaMist.equals("sim")) // se ele tiver conjuntos mistos equipados 
             {   
         
                 System.out.println("Digite o total de bônus que a seguinte habilidade recebe do conjunto de objetos: ");
                 System.out.println("Observação: se o personagem recebe bônus de diferentes conjuntos na mesma habilidade, como capa+traje(7% na força) e cinto+sapatos(7% na força), some o bônus (7+7, por exemplo) e insira na respectiva habilidade");
                 System.out.println("ATENÇÃO: Não some os bônus de arma, dispositivo e míssil, pois já foram calculados!");
+                   
+                
+                //Adicionar Try-catch 
+                try
+                {
+                    System.out.println("Força básica: ");
+                    pontosObjetosMistosForca = sc.nextInt();
+                    sc.nextLine();              
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                    System.out.println("TENTE NOVAMENTE!");
                     
-                System.out.println("Força básica: ");
-                int pontosObjetosMistosForca = sc.nextInt();
-                sc.nextLine();
+                    sc.next();
+                }
                 this.bonusEquipamentosForca += pontosObjetosMistosForca;
               
                     
-                System.out.println("Vigor básico: ");
-                int pontosObjetosMistosVigor = sc.nextInt();
-                sc.nextLine();
+                try
+                {
+                    System.out.println("Vigor básico: ");
+                    pontosObjetosMistosVigor = sc.nextInt();
+                    sc.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                    System.out.println("TENTE NOVAMENTE!");
+                    
+                    sc.next();
+                }
                 this.bonusEquipamentosVigor += pontosObjetosMistosVigor;
                     
                     
+                try
+                {
                 System.out.println("Cérebro básico: ");
-                int pontosObjetosMistosCerebro = sc.nextInt();
+                pontosObjetosMistosCerebro = sc.nextInt();
                 sc.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                    System.out.println("TENTE NOVAMENTE!");
+                    
+                    sc.next();
+                }
                 this.bonusEquipamentosCerebro += pontosObjetosMistosCerebro; 
               
-                    
+                
+                try
+                {
                 System.out.println("Intuicao básica: ");
-                int pontosObjetosMistosIntuicao = sc.nextInt();
+                pontosObjetosMistosIntuicao = sc.nextInt();
                 sc.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
+                    System.out.println("TENTE NOVAMENTE!");
+                    
+                    sc.next();
+                }
                 this.bonusEquipamentosIntuicao += pontosObjetosMistosIntuicao;
             }
+            
             // Roda caso o usuário digite que o personagem não tem conjunto misto.
             else
             {
-            this.bonusEquipamentosForca += 0;
-            this.bonusEquipamentosVigor += 0;
-            this.bonusEquipamentosCerebro += 0;
-            this.bonusEquipamentosIntuicao += 0;
-        
-            System.out.println("Nenhum bonus de conjunto misto adicionado!");
+                this.bonusEquipamentosForca += 0;
+                this.bonusEquipamentosVigor += 0;
+                this.bonusEquipamentosCerebro += 0;
+                this.bonusEquipamentosIntuicao += 0;
+                System.out.println("Nenhum bonus de conjunto misto adicionado!");
             }
             
         } // Fim da quarta estrutura de condição.
         
-         fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEquipamentosForca);
-         fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEquipamentosVigor);
-         fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEquipamentosCerebro);
-         fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEquipamentosIntuicao);
+        fichaPersonagem.getBonusTotal().setBonusTotalForca(this.bonusEquipamentosForca);
+        fichaPersonagem.getBonusTotal().setBonusTotalVigor(this.bonusEquipamentosVigor);
+        fichaPersonagem.getBonusTotal().setBonusTotalCerebro(this.bonusEquipamentosCerebro);
+        fichaPersonagem.getBonusTotal().setBonusTotalIntuicao(this.bonusEquipamentosIntuicao);
     
     } // Fechamento do método verificarConjuntos.   
 

@@ -12,9 +12,7 @@ import herozero.project.community.logic.AtributosEquipamentosPet;
 import herozero.project.community.logic.CalculoFinalHabilidadeBasica;
 import herozero.project.community.model.FichaPersonagem;
 
-
 import java.util.Scanner;
-
 
 /**=== HISTÓRICO DE VERSÕES ===
 
@@ -93,7 +91,7 @@ public class Main
                
         System.out.printf("\n***************************************************************************\n\n");
         
-        
+       
         
         // Calcular bônus do conjunto de equipamentos.
         bonusEquipamentos.verificarConjuntos(sc, fichaPersonagem);
