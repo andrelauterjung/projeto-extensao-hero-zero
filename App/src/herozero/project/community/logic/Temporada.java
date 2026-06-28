@@ -132,7 +132,7 @@ public class Temporada
                     System.out.println(" ERRO: Você digitou um caractere onde deve ir número!");
                     System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X \n\n");
                         
-                    sc.next();
+                    sc.nextLine();
             
                 }// Fechamento do Try-catch
                     

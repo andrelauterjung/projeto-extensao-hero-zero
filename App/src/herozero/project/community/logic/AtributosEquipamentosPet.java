@@ -4,6 +4,7 @@ import herozero.project.community.view.AtributosObjetosPetView;
 import herozero.project.community.model.FichaPersonagem; 
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 /**
  * Classe com método que pergunta informações ao usuário e armazena valores 
  * referentes aos atributos dos equipamentos e do pet que o personagem está equipado.
@@ -13,6 +14,8 @@ import java.util.Scanner;
  */
 public class AtributosEquipamentosPet
 {
+    boolean isFuncionando = true;
+    
     private int totalAtributosForcaEquipamentosPet;
     private int totalAtributosVigorEquipamentosPet;
     private int totalAtributosCerebroEquipamentosPet;
@@ -31,74 +34,261 @@ public class AtributosEquipamentosPet
         vai digitar os pontos de força que os equipamentos e pet acrescentam às habilidades. */
         String pergunta = habilidadeTotal.getRespHabTotalText();
         
-        switch(pergunta.toLowerCase())
+        switch(pergunta)
         {
             /* Chama as perguntas da classe AtributosObjetosPetView referentes a
             força que os objetos acrescentam às habilidades do personagem. 
             
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/
             case "forca":
+                
                 // Item: Capa.
-                perguntasAtributosEquipPet.mensagemForcaItemCapa();
-                int atributoForcaEquipCapa = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCapa;
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemCapa();
+                        int atributoForcaEquipCapa = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipCapa <0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            isFuncionando = false;
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCapa;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
                 
                 // Item: Traje.
-                perguntasAtributosEquipPet.mensagemForcaItemTraje();
-                int atributoForcaEquipTraje = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipTraje;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                 while(isFuncionando)
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemTraje();
+                        int atributoForcaEquipTraje = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipTraje < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipTraje;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }     
+                } // Fechamento do loop while. 
+                 
                 
                 // Item: Cinto.
-                perguntasAtributosEquipPet.mensagemForcaItemCinto();
-                int atributoForcaEquipCinto = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCinto;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando)
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemCinto();
+                        int atributoForcaEquipCinto = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipCinto < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipCinto;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
+    
+                
                 
                 // Item: Sapatos.
-                perguntasAtributosEquipPet.mensagemForcaItemSapatos();
-                int atributoForcaEquipSapatos = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipSapatos;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemSapatos();
+                        int atributoForcaEquipSapatos = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipSapatos < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipSapatos;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
+                
                 
                 // Item: Máscara.
-                perguntasAtributosEquipPet.mensagemForcaItemMascara();
-                int atributoForcaEquipMascara = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipMascara;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemMascara();
+                        int atributoForcaEquipMascara = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipMascara < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipMascara;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+       
+
                 
                 // Item: Dispositivo.
-                perguntasAtributosEquipPet.mensagemForcaItemDispositivo();
-                int atributoForcaEquipDispositivo = sc.nextInt();
-                sc.nextLine();
-            
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipDispositivo;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {perguntasAtributosEquipPet.mensagemForcaItemDispositivo();
+                    int atributoForcaEquipDispositivo = sc.nextInt();
+                    sc.nextLine();
+                
+                        if(atributoForcaEquipDispositivo < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipDispositivo;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+       
+                
                      
                 // Item: Arma.
-                perguntasAtributosEquipPet.mensagemForcaItemArma();
-                int atributoForcaEquipArma = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemArma();
+                        int atributoForcaEquipArma = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipArma < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipArma;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
                 
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipArma;
+
                 
                 // Item: Pet.
-                perguntasAtributosEquipPet.mensagemForcaItemPet();
-                int atributoForcaEquipPet = sc.nextInt();
-                sc.nextLine();
-                
-                this.totalAtributosForcaEquipamentosPet += atributoForcaEquipPet;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemForcaItemPet();
+                        int atributoForcaEquipPet = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoForcaEquipPet < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosForcaEquipamentosPet += atributoForcaEquipPet;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
                 
                 
                 /* Adiciona o valor total dos pontos de força dos equipamentos e 
                 pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setForcaEquipamentosPet(this.totalAtributosForcaEquipamentosPet);
-                
                 break;
         
                 
@@ -107,62 +297,249 @@ public class AtributosEquipamentosPet
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "vigor":
-                // Item: Capa.
-                perguntasAtributosEquipPet.mensagemVigorItemCapa();
-                int atributoVigorEquipCapa = sc.nextInt();
-                sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCapa;
+                // Item: Capa.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemCapa();
+                        int atributoVigorEquipCapa = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoVigorEquipCapa < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCapa;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
+                
+                
                 
                 // Item: Traje.
-                perguntasAtributosEquipPet.mensagemVigorItemTraje();
-                int atributoVigorEquipTraje = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemTraje();
+                        int atributoVigorEquipTraje = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipTraje;
+                        if(atributoVigorEquipTraje < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipTraje;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
                 
                 // Item: Cinto.
-                perguntasAtributosEquipPet.mensagemVigorItemCinto();
-                int atributoVigorEquipCinto = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemCinto();
+                        int atributoVigorEquipCinto = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoVigorEquipCinto < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCinto;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipCinto;
-                
+
                 // Item: Sapatos.
-                perguntasAtributosEquipPet.mensagemVigorItemSapatos();
-                int atributoVigorEquipSapatos = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemSapatos();
+                        int atributoVigorEquipSapatos = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipSapatos;
+                        if(atributoVigorEquipSapatos < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipSapatos;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
+
                 
                 // Item: Máscara.
-                perguntasAtributosEquipPet.mensagemVigorItemMascara();
-                int atributoVigorEquipMascara = sc.nextInt();
-                sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipMascara;
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemMascara();
+                        int atributoVigorEquipMascara = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoVigorEquipMascara < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipMascara;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
+    
                 
                 // Item: Dispositivo.
-                perguntasAtributosEquipPet.mensagemVigorItemDispositivo();
-                int atributoVigorEquipDispositivo = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemDispositivo();
+                        int atributoVigorEquipDispositivo = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipDispositivo;
-                      
+                        if(atributoVigorEquipDispositivo < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipDispositivo;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
+                
+
                 // Item: Arma.
-                perguntasAtributosEquipPet.mensagemVigorItemArma();
-                int atributoVigorEquipArma = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemArma();
+                        int atributoVigorEquipArma = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipArma;
-                              
+                        if(atributoVigorEquipArma < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipArma;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
+                
+              
                 // Item: Pet.
-                perguntasAtributosEquipPet.mensagemVigorItemPet();
-                int atributoVigorEquipPet = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemVigorItemPet();
+                        int atributoVigorEquipPet = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosVigorEquipamentosPet += atributoVigorEquipPet;       
+                        if(atributoVigorEquipPet < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosVigorEquipamentosPet += atributoVigorEquipPet;    
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while.
                 
+ 
                 /* Adiciona o valor total dos pontos de vigor dos equipamentos e 
                 pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setVigorEquipamentosPet(this.totalAtributosVigorEquipamentosPet);
@@ -174,61 +551,249 @@ public class AtributosEquipamentosPet
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "cerebro":
+                
                 // Item: Capa.
-                perguntasAtributosEquipPet.mensagemCerebroItemCapa();
-                int atributoCerebroEquipCapa = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemCapa();
+                        int atributoCerebroEquipCapa = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCapa;
-                  
+                        if(atributoCerebroEquipCapa < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCapa;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
+  
                 // Item: Traje.
-                perguntasAtributosEquipPet.mensagemCerebroItemTraje();
-                int atributoCerebroEquipTraje = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemTraje();
+                        int atributoCerebroEquipTraje = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoCerebroEquipTraje < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipTraje;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipTraje;
                   
                 // Item: Cinto.
-                perguntasAtributosEquipPet.mensagemCerebroItemCinto();
-                int atributoCerebroEquipCinto = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemCinto();
+                        int atributoCerebroEquipCinto = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCinto;
+                        if(atributoCerebroEquipCinto < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipCinto;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
                        
                 // Item: Sapatos.
-                perguntasAtributosEquipPet.mensagemCerebroItemSapatos();
-                int atributoCerebroEquipSapatos = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemSapatos();
+                        int atributoCerebroEquipSapatos = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipSapatos;
+                        if(atributoCerebroEquipSapatos < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipSapatos;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
+                
+                
+                
                 
                 // Item: Máscara.
-                perguntasAtributosEquipPet.mensagemCerebroItemMascara();
-                int atributoCerebroEquipMascara = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                 while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemMascara();
+                        int atributoCerebroEquipMascara = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipMascara;
+                        if(atributoCerebroEquipMascara < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipMascara;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
                  
                 // Item: Dispositivo.
-                perguntasAtributosEquipPet.mensagemCerebroItemDispositivo();
-                int atributoCerebroEquipDispositivo = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemDispositivo();
+                        int atributoCerebroEquipDispositivo = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipDispositivo;
+                        if(atributoCerebroEquipDispositivo < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipDispositivo;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
+
                 // Item: Arma.
-                perguntasAtributosEquipPet.mensagemCerebroItemArma();
-                int atributoCerebroEquipArma = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemArma();
+                        int atributoCerebroEquipArma = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipArma;
-                  
+                        if(atributoCerebroEquipArma < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipArma;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
+  
                 // Item: Pet.
-                perguntasAtributosEquipPet.mensagemCerebroItemPet();
-                int atributoCerebroEquipPet = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemCerebroItemPet();
+                        int atributoCerebroEquipPet = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipPet;
+                        if(atributoCerebroEquipPet < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosCerebroEquipamentosPet += atributoCerebroEquipPet;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+                
                 
                 /* Adiciona o valor total dos pontos de cérebro dos equipamentos
                 e pet equipados na classe AtributosEquipPet. */
@@ -236,82 +801,260 @@ public class AtributosEquipamentosPet
                 break;
                 
             
+                
             /* Chama as perguntas da classe AtributosObjetosPetView referentes a
             intuição que os objetos acrescentam às habilidades do personagem. 
                 
             Após isso, o usuário digita o total de atributos ao respectivo objeto*/    
             case "intuicao":
+                
                 // Item: Capa.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemCapa();
-                int atributoIntuicaoEquipCapa = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemCapa();
+                        int atributoIntuicaoEquipCapa = sc.nextInt();
+                        sc.nextLine();
+                    
+                        if(atributoIntuicaoEquipCapa < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCapa;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCapa;
-                        
+                      
                 // Item: Traje.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemTraje();
-                int atributoIntuicaoEquipTraje = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemTraje();
+                        int atributoIntuicaoEquipTraje = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipTraje;
+                        if(atributoIntuicaoEquipTraje < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipTraje;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
+  
                      
                 // Item: Cinto.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemCinto();
-                int atributoIntuicaoEquipCinto = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                         perguntasAtributosEquipPet.mensagemIntuicaoItemCinto();
+                        int atributoIntuicaoEquipCinto = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoIntuicaoEquipCinto < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCinto;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipCinto;
+
                    
                 // Item: Sapatos.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemSapatos();
-                int atributoIntuicaoEquipSapatos = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemSapatos();
+                        int atributoIntuicaoEquipSapatos = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoIntuicaoEquipSapatos < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipSapatos;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipSapatos;
                 
                 // Item: Máscara.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemMascara();
-                int atributoIntuicaoEquipMascara = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemMascara();
+                        int atributoIntuicaoEquipMascara = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoIntuicaoEquipMascara < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipMascara;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipMascara;
                  
                 // Item: Dispositivo.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemDispositivo();
-                int atributoIntuicaoEquipDispositivo = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemDispositivo();
+                        int atributoIntuicaoEquipDispositivo = sc.nextInt();
+                        sc.nextLine();
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipDispositivo;
+                        if(atributoIntuicaoEquipDispositivo < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipDispositivo;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
+
                 // Item: Arma.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemArma();
-                int atributoIntuicaoEquipArma = sc.nextInt();
-                sc.nextLine();
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemArma();
+                        int atributoIntuicaoEquipArma = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(atributoIntuicaoEquipArma < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipArma;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipArma;
                 
                 // Item: Pet.
-                perguntasAtributosEquipPet.mensagemIntuicaoItemPet();
-                int atributoIntuicaoEquipPet = sc.nextInt();
-                sc.nextLine();
-                
-                this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipPet;
-                
+                isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
+                while(isFuncionando) 
+                {
+                    try
+                    {
+                        perguntasAtributosEquipPet.mensagemIntuicaoItemPet();
+                        int atributoIntuicaoEquipPet = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(tributoIntuicaoEquipPet < 0)
+                        {
+                            System.out.println("ERRO: Você digitou um número negativo!");
+                            System.out.println("Tente novamente!");
+                        }
+                        else
+                        {
+                            this.totalAtributosIntuicaoEquipamentosPet += atributoIntuicaoEquipPet;
+                            isFuncionando = false;
+                        }
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
+                        System.out.println("Tente novamente!");
+                        sc.nextLine();
+                    }    
+                } // Fechamento do loop while. 
                 
                 /* Adiciona o valor total dos pontos de intuição dos equipamentos
                 e pet equipados na classe AtributosEquipPet. */
                 fichaPersonagem.getAtributosEquipPet().setIntuicaoEquipamentosPet(this.totalAtributosIntuicaoEquipamentosPet);
                 break;
-                
-            default:
-                fichaPersonagem.getAtributosEquipPet().setForcaEquipamentosPet(0);
-                fichaPersonagem.getAtributosEquipPet().setVigorEquipamentosPet(0);
-                fichaPersonagem.getAtributosEquipPet().setCerebroEquipamentosPet(0);
-                fichaPersonagem.getAtributosEquipPet().setIntuicaoEquipamentosPet(0);
-                System.out.println("Habilidade indisponível!");
-                
+        
         } // fechamento do switch case
         
     } // fechamento do método calcularAtributosEquipPet
-    
+       
 } // fechamento da classe
