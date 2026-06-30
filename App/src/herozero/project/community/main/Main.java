@@ -11,6 +11,7 @@ import herozero.project.community.logic.HabilidadeTotalLogic;
 import herozero.project.community.logic.AtributosEquipamentosPet;
 import herozero.project.community.logic.CalculoFinalHabilidadeBasica;
 import herozero.project.community.model.FichaPersonagem;
+import herozero.project.community.view.ConsoleStyleView;
 
 import java.util.Scanner;
 
@@ -43,6 +44,7 @@ public class Main
         AtributosEquipamentosPet atributosEquipamentosPet = new AtributosEquipamentosPet();
         CalculoFinalHabilidadeBasica calculoFinal = new CalculoFinalHabilidadeBasica();
         FichaPersonagem fichaPersonagem = new FichaPersonagem();
+        ConsoleStyleView consoleStyle = new ConsoleStyleView();
         
         Scanner sc = new Scanner(System.in);
         
