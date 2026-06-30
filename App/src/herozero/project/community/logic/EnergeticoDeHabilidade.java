@@ -2,6 +2,7 @@ package herozero.project.community.logic;
 
 import herozero.project.community.view.BonusEnergeticView;
 import herozero.project.community.model.FichaPersonagem;
+import herozero.project.community.view.ErrorStyleView;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class EnergeticoDeHabilidade
     public void verificarEnergetico(Scanner sc, FichaPersonagem fichaPersonagem)
     {
         BonusEnergeticView perguntaEnergetico = new BonusEnergeticView();
+        ErrorStyleView errorMensagem = new ErrorStyleView();
         
         boolean isEnergeticQuestRunning = true;
         int userOpcaoEnergetico = -1;
@@ -35,22 +37,15 @@ public class EnergeticoDeHabilidade
                }
                else
                {
-                   System.out.printf("\nX X X X X X X X X X X X X X X X X X X\n");
-                   System.out.println("    Você digitou um número inválido!");
-                   System.out.println("         TENTE NOVAMENTE!");
-                   System.out.printf("X X X X X X X X X X X X X X X X X X X \n\n");
+                   errorMensagem.mensagemNumeroInvalido();
                }
                
             }
             catch(InputMismatchException e)
             {
                 userOpcaoEnergetico = -1;
-                System.out.printf("\nX X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n");
-                System.out.println("Você digitou uma String onde deve ir número, tente novamente!");
-                System.out.println("ERRO: "+e.getMessage());
-                System.out.printf("X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X\n\n");
-                
-                sc.next();
+                errorMensagem.mensagemEntradaInvalida();
+                sc.nextLine();
             }
         }
         
@@ -102,8 +97,8 @@ public class EnergeticoDeHabilidade
                 
                 System.out.println("O personagem não recebe bônus de energético!");
                 
-        } // fechamento do switch case
+        } // Fechamento do Switch case.
         
-    } // fechamento do método 
+    } // Fechamento do método verificarEnergetico.
     
-} // fechamento da classe
+} // Fechamento da classe.
