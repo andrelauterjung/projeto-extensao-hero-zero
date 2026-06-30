@@ -1029,7 +1029,7 @@ public class AtributosEquipamentosPet
                         int atributoIntuicaoEquipPet = sc.nextInt();
                         sc.nextLine();
                         
-                        if(tributoIntuicaoEquipPet < 0)
+                        if(atributoIntuicaoEquipPet < 0)
                         {
                             System.out.println("ERRO: Você digitou um número negativo!");
                             System.out.println("Tente novamente!");

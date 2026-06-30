@@ -166,7 +166,7 @@ public class CalculoFinalHabilidadeBasica
                 double habilidadeTotalAproxI = somaHabTotBonTotI + totalIntuicaoEquipamentosPet;
         
                 System.out.printf("VALOR APROXIMADO DA HABILIDADE TOTAL NA INTUIÇÃO COM BASE NOS DADOS DIGITADOS PELO USUÁRIO: %.1f\n", habilidadeTotalAproxI);
-                System.out.printf("ATENÇÃO: caso o valor seja próximo ou exato ao total de habilidade do personagem, \nsignifica que a habilidade básica foi calculada corretamente!");
+                System.out.printf("ATENÇÃO: caso o valor seja próximo ou exato ao total de habilidade do personagem, \nsignifica que a habilidade básica foi calculada corretamente!\n");
                 break;
                 
             default:
