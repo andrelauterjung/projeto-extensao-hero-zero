@@ -10,7 +10,9 @@ import herozero.project.community.logic.BonusEquipamentos;
 import herozero.project.community.logic.HabilidadeTotalLogic;
 import herozero.project.community.logic.AtributosEquipamentosPet;
 import herozero.project.community.logic.CalculoFinalHabilidadeBasica;
+
 import herozero.project.community.model.FichaPersonagem;
+
 import herozero.project.community.view.ConsoleStyleView;
 
 import java.util.Scanner;
@@ -43,83 +45,74 @@ public class Main
         HabilidadeTotalLogic habilidadeTotal = new HabilidadeTotalLogic();
         AtributosEquipamentosPet atributosEquipamentosPet = new AtributosEquipamentosPet();
         CalculoFinalHabilidadeBasica calculoFinal = new CalculoFinalHabilidadeBasica();
+        
         FichaPersonagem fichaPersonagem = new FichaPersonagem();
+        
         ConsoleStyleView consoleStyle = new ConsoleStyleView();
         
         Scanner sc = new Scanner(System.in);
         
  
-        System.out.println("*******  Calculadora de Habilidade Básica Hero Zero v1.1.0  ***************");
-        System.out.println("***************************************************************************");
-        System.out.println("***                          INICIANDO O PROGRAMA                       ***");
-        System.out.printf("***************************************************************************\n\n");
+        consoleStyle.mensagemInicio();
         
-    
-        // Calculando o bônus que o energético de habilidade acrescenta nas habilidades básicas do personagem
+        
+        /* Calculando o bônus que o energético de habilidade acrescenta nas 
+        habilidades básicas do personagem. */
         energetico.verificarEnergetico(sc, fichaPersonagem);
           
-        System.out.printf("\n***************************************************************************\n\n");
+        consoleStyle.linhaVisualDivisoria();
         
-        
-        
-        // Calculando o bônus que a Liga acrescenta nas habilidades básicas do personagem.
+       
+        /* Calculando o bônus que a Liga acrescenta nas habilidades básicas 
+        do personagem. */
         liga.verificarLiga(sc, fichaPersonagem);
-        
-        System.out.printf("\n***************************************************************************\n\n");
+        consoleStyle.linhaVisualDivisoria();
 
         
         // Calcular bônus que o time atribui às habilidades básica
         time.verificarBonusTime(sc, fichaPersonagem);
-       
-        System.out.printf("\n***************************************************************************\n");
+        consoleStyle.linhaVisualDivisoria();
         
         
-        // Calculando bônus que o Laboratório de Pesquisa cibernético acrescenta às habilidades básicas do personagem.
+        /* Calculando bônus que o Laboratório de Pesquisa cibernético 
+        acrescenta às habilidades básicas do personagem. */
         esconderijo.verificarBonusEsconderijo(sc, fichaPersonagem);
-        
-        System.out.printf("\n***************************************************************************\n\n");
+        consoleStyle.linhaVisualDivisoria();
         
         
         // Calcular bônus da habilidade do pet
         habilidadePet.escolhaHabilidade(sc, fichaPersonagem);
-        
-        
-        System.out.printf("\n***************************************************************************\n\n");
-        
+        consoleStyle.linhaVisualDivisoria();
         
         
         // Calcular o bônus de temporada
-        temporada.verificacaoBonusTemporada(sc, fichaPersonagem);
-               
-        System.out.printf("\n***************************************************************************\n\n");
+        temporada.verificacaoBonusTemporada(sc, fichaPersonagem); 
+        consoleStyle.linhaVisualDivisoria();
         
        
-        
         // Calcular bônus do conjunto de equipamentos.
-        bonusEquipamentos.verificarConjuntos(sc, fichaPersonagem);
-               
-        System.out.printf("***************************************************************************\n\n");
+        bonusEquipamentos.verificarConjuntos(sc, fichaPersonagem);    
+        consoleStyle.linhaVisualDivisoria();
         
     
-        // Perguntar ao usuário qual habilidade a ser calculada e pedir o valor de habilidade total
+        /* Perguntar ao usuário qual habilidade a ser calculada e pedir 
+        o valor de habilidade total. */
         habilidadeTotal.armazenarHabilidadeTotal(sc, fichaPersonagem);
+        consoleStyle.linhaVisualDivisoria();
         
         
-        System.out.printf("***************************************************************************\n\n");
-        
-        atributosEquipamentosPet.calcularAtributosEquipPet(sc, habilidadeTotal, fichaPersonagem); // passando o objeto como parâmetro
-        
-        System.out.printf("\n***************************************************************************\n\n");
+        // Calcular atributos dos equipamentos e pet equipados no personagem.
+        atributosEquipamentosPet.calcularAtributosEquipPet(sc, habilidadeTotal, fichaPersonagem); 
+        consoleStyle.linhaVisualDivisoria();
         
 
         // Parte final da lógica do programa
         calculoFinal.calculoFinalHabilidadeBasica(habilidadeTotal, fichaPersonagem);
         
-      
-        System.out.println("********************************************************************************");
-        System.out.println("***                      PROGRAMA ENCERRADO!                                 ***");
-        System.out.println("********************************************************************************");
-    
+        consoleStyle.mensagemEncerramento();
+        
         sc.close();
+        
     }
-}
+    
+} // Fechamendo da classe Main.
