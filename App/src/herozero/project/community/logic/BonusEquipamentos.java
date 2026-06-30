@@ -2,7 +2,7 @@ package herozero.project.community.logic;
 
 import herozero.project.community.view.BonusEquipamentosView;
 import herozero.project.community.model.FichaPersonagem;
-
+import herozero.project.community.view.ErrorStyleView;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 /**
@@ -24,6 +24,7 @@ public class BonusEquipamentos
     {
         
         BonusEquipamentosView perguntaBonusEquipamentos = new BonusEquipamentosView();
+        ErrorStyleView errorMensagem = new ErrorStyleView();
         
         boolean isVerificandoConjLendario = true;
         boolean isVerificandoValBonusEpic = true;
@@ -91,7 +92,7 @@ public class BonusEquipamentos
                     
                     if(!perguntaEpico.equals("sim") && !perguntaEpico.equals("não") && !perguntaEpico.equals("nao"))
                     {
-                        System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                        errorMensagem.mensagemOpcaoErro();
                     }
                     else
                     {
@@ -106,7 +107,7 @@ public class BonusEquipamentos
                 /* Início da segunda estrutura de condição
                 Roda caso o usuário digite que o personagem tenha conjunto 
                 épico equipado. */
-                if(perguntaEpico.equals("sim")) // Roda caso o usuário digite que o personagem tenha conjunto épico.
+                if(perguntaEpico.equals("sim"))
                 {
                     
                     while(isVerificandoValBonusEpic)
@@ -130,9 +131,7 @@ public class BonusEquipamentos
                         }
                         catch(InputMismatchException e)
                         {                          
-                            System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                            System.out.println("Tente novamente!");
-                            
+                            errorMensagem.mensagemEntradaInvalida();
                             sc.nextLine();
                         } // Fechamento do Try-catch. 
                             
@@ -180,8 +179,7 @@ public class BonusEquipamentos
             else
                 
             {
-                System.out.println("Você digitou 'sim' ou 'nao' errado!");
-                System.out.println("TENTE NOVAMENTE!");
+                errorMensagem.mensagemOpcaoErro();
                 
             } // Fechamento da primeira estrutura de condição.
         
@@ -207,7 +205,7 @@ public class BonusEquipamentos
                 }
                 else
                 {
-                    System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                    errorMensagem.mensagemOpcaoErro();
                         
                 }
                 
@@ -287,7 +285,7 @@ public class BonusEquipamentos
                 
                 if(!perguntaMist.equals("sim") && !perguntaMist.equals("não") && !perguntaMist.equals("nao"))
                 {
-                    System.out.println("Você digitou 'sim', 'nao' ou 'não' errado! Tente novamente!");
+                    errorMensagem.mensagemOpcaoErro();
                 }
                 else
                 {
@@ -316,7 +314,7 @@ public class BonusEquipamentos
                     
                         if(pontosObjetosMistosForca < 0 || pontosObjetosMistosForca > 28)
                         {
-                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                            errorMensagem.mensagemNumeroInvalido();
                         }
                         else
                         {
@@ -325,9 +323,7 @@ public class BonusEquipamentos
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                        System.out.println("TENTE NOVAMENTE!");
-                    
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }
                 }
@@ -345,7 +341,7 @@ public class BonusEquipamentos
                     
                         if(pontosObjetosMistosVigor < 0 || pontosObjetosMistosVigor > 28)
                         {
-                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                            errorMensagem.mensagemNumeroInvalido();
                         }
                         else
                         {
@@ -354,9 +350,7 @@ public class BonusEquipamentos
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                        System.out.println("TENTE NOVAMENTE!");
-                    
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }
                 }
@@ -375,7 +369,7 @@ public class BonusEquipamentos
                 
                         if(pontosObjetosMistosCerebro < 0 || pontosObjetosMistosCerebro > 28)
                         {
-                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                            errorMensagem.mensagemNumeroInvalido();
                         }
                         else
                         {
@@ -384,9 +378,7 @@ public class BonusEquipamentos
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                        System.out.println("TENTE NOVAMENTE!");
-                    
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }
                 }
@@ -405,7 +397,7 @@ public class BonusEquipamentos
                     
                         if(pontosObjetosMistosIntuicao < 0 || pontosObjetosMistosIntuicao > 28)
                         {
-                            System.out.println("ERRO!: Valor inválido! Tente novamente");
+                            errorMensagem.mensagemNumeroInvalido();
                         }
                         else
                         {
@@ -414,9 +406,7 @@ public class BonusEquipamentos
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número. ");
-                        System.out.println("TENTE NOVAMENTE!");
-                    
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }
                 }
