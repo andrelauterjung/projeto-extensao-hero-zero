@@ -2,6 +2,7 @@ package herozero.project.community.logic;
 
 import herozero.project.community.view.AtributosObjetosPetView;
 import herozero.project.community.model.FichaPersonagem; 
+import herozero.project.community.view.ErrorStyleView;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
@@ -25,6 +26,7 @@ public class AtributosEquipamentosPet
     public void calcularAtributosEquipPet(Scanner sc, HabilidadeTotalLogic habilidadeTotal, FichaPersonagem fichaPersonagem)
     {
         AtributosObjetosPetView perguntasAtributosEquipPet = new AtributosObjetosPetView();        
+        ErrorStyleView errorMensagem = new ErrorStyleView();
         
         /* A variável pergunta pega a mesma resposta do nome da habilidade total
         que o usuário digitou anteriormente e aproveita para ser usada nesta classe
@@ -53,8 +55,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipCapa <0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -64,9 +65,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
-                        
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -74,7 +73,7 @@ public class AtributosEquipamentosPet
                 
                 // Item: Traje.
                 isFuncionando = true; // Mudando o valor da variável para true e assim iniciar outro loop while.
-                 while(isFuncionando)
+                while(isFuncionando)
                 {
                     try
                     {
@@ -84,8 +83,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipTraje < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -95,8 +93,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }     
                 } // Fechamento do loop while. 
@@ -114,8 +111,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipCinto < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -125,8 +121,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -145,8 +140,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipSapatos < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -156,8 +150,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -176,8 +169,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipMascara < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -187,8 +179,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -206,8 +197,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoForcaEquipDispositivo < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -217,8 +207,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -237,8 +226,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipArma < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -248,8 +236,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -268,8 +255,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoForcaEquipPet < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -279,8 +265,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -309,8 +294,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoVigorEquipCapa < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -320,8 +304,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -340,8 +323,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoVigorEquipTraje < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -351,8 +333,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -370,8 +351,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoVigorEquipCinto < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -381,8 +361,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -400,8 +379,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoVigorEquipSapatos < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -411,8 +389,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -432,8 +409,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoVigorEquipMascara < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -443,8 +419,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -462,8 +437,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoVigorEquipDispositivo < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -473,8 +447,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -492,8 +465,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoVigorEquipArma < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -503,8 +475,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -522,8 +493,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoVigorEquipPet < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -533,8 +503,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while.
@@ -564,8 +533,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipCapa < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -575,8 +543,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -594,8 +561,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoCerebroEquipTraje < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -605,8 +571,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -624,8 +589,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipCinto < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -635,8 +599,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -654,8 +617,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipSapatos < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -665,8 +627,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -687,8 +648,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipMascara < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -698,8 +658,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -717,8 +676,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipDispositivo < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -728,8 +686,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -747,8 +704,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipArma < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -758,8 +714,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -777,8 +732,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoCerebroEquipPet < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -788,8 +742,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -820,8 +773,7 @@ public class AtributosEquipamentosPet
                     
                         if(atributoIntuicaoEquipCapa < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -831,8 +783,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -850,8 +801,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoIntuicaoEquipTraje < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -861,8 +811,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -880,8 +829,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoIntuicaoEquipCinto < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -891,8 +839,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -911,8 +858,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoIntuicaoEquipSapatos < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -922,8 +868,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -941,8 +886,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoIntuicaoEquipMascara < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -952,8 +896,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -971,8 +914,7 @@ public class AtributosEquipamentosPet
                 
                         if(atributoIntuicaoEquipDispositivo < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -982,8 +924,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -1001,8 +942,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoIntuicaoEquipArma < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -1012,8 +952,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
@@ -1031,8 +970,7 @@ public class AtributosEquipamentosPet
                         
                         if(atributoIntuicaoEquipPet < 0)
                         {
-                            System.out.println("ERRO: Você digitou um número negativo!");
-                            System.out.println("Tente novamente!");
+                            errorMensagem.mensagemErroNumNegativo();
                         }
                         else
                         {
@@ -1042,8 +980,7 @@ public class AtributosEquipamentosPet
                     }
                     catch(InputMismatchException e)
                     {
-                        System.out.println("ERRO: Você digitou uma String onde deve ir número!");
-                        System.out.println("Tente novamente!");
+                        errorMensagem.mensagemEntradaInvalida();
                         sc.nextLine();
                     }    
                 } // Fechamento do loop while. 
