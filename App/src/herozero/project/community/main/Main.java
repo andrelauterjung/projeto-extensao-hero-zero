@@ -54,8 +54,7 @@ public class Main
         
  
         consoleStyle.mensagemInicio();
-        
-        
+              
         /* Calculando o bônus que o energético de habilidade acrescenta nas 
         habilidades básicas do personagem. */
         energetico.verificarEnergetico(sc, fichaPersonagem);
@@ -69,7 +68,7 @@ public class Main
         consoleStyle.linhaVisualDivisoria();
 
         
-        // Calcular bônus que o time atribui às habilidades básica
+        // Calcular bônus que o time atribui às habilidades básicas.
         time.verificarBonusTime(sc, fichaPersonagem);
         consoleStyle.linhaVisualDivisoria();
         
@@ -80,23 +79,23 @@ public class Main
         consoleStyle.linhaVisualDivisoria();
         
         
-        // Calcular bônus da habilidade do pet
+        // Calcular bônus da habilidade do pet equipado.
         habilidadePet.escolhaHabilidade(sc, fichaPersonagem);
         consoleStyle.linhaVisualDivisoria();
         
         
-        // Calcular o bônus de temporada
+        // Calcular o bônus de temporada. 
         temporada.verificacaoBonusTemporada(sc, fichaPersonagem); 
         consoleStyle.linhaVisualDivisoria();
         
        
-        // Calcular bônus do conjunto de equipamentos.
+        // Calcular bônus do conjunto de equipamentos equipados.
         bonusEquipamentos.verificarConjuntos(sc, fichaPersonagem);    
         consoleStyle.linhaVisualDivisoria();
         
     
-        /* Perguntar ao usuário qual habilidade a ser calculada e pedir 
-        o valor de habilidade total. */
+        /* Perguntar ao usuário qual habilidade a ser calculada e solicitar 
+        que o usuário informe o valor de habilidade total. */
         habilidadeTotal.armazenarHabilidadeTotal(sc, fichaPersonagem);
         consoleStyle.linhaVisualDivisoria();
         
@@ -106,7 +105,7 @@ public class Main
         consoleStyle.linhaVisualDivisoria();
         
 
-        // Parte final da lógica do programa
+        // Parte final do programa, onde são excutados os calculos finais.
         calculoFinal.calculoFinalHabilidadeBasica(habilidadeTotal, fichaPersonagem);
         
         consoleStyle.mensagemEncerramento();
@@ -115,4 +114,4 @@ public class Main
         
     }
     
-} // Fechamendo da classe Main.
+} // Fechamento da classe Main.
